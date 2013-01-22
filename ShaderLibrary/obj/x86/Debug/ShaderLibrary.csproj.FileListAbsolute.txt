@@ -1,0 +1,1 @@
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
