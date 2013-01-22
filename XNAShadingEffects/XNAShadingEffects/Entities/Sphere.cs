@@ -30,18 +30,19 @@ namespace XNAShadingEffects.Entities
                 foreach (ModelMeshPart part in mesh.MeshParts)
                 {
                     part.Effect = effect;
-                    effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
-                    effect.Parameters["View"].SetValue(view);
-                    effect.Parameters["Projection"].SetValue(projection);
-                    //effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
                     effect.Parameters["CameraPosition"].SetValue(cameraPosition);
+                    //effect.Parameters["ModelTexture"].SetValue(texture);
+                    //effect.Parameters["NormalMap"].SetValue(normalMap);
+                    //effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector3());
+                    //effect.Parameters["FogEnd"].SetValue(20.0f);
+                    //effect.Parameters["FogStart"].SetValue(10.0f);
+                    //effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
+
+                    effect.Parameters["Projection"].SetValue(projection);
+                    effect.Parameters["View"].SetValue(view);
+                    effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
                     effect.Parameters["WorldInverseTranspose"].SetValue(
                                             Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
-                    //effect.Parameters["NormalMap"].SetValue(normalMap);
-                    effect.Parameters["ModelTexture"].SetValue(texture);
-                    effect.Parameters["FogStart"].SetValue(10.0f);
-                    effect.Parameters["FogEnd"].SetValue(20.0f);
-                    effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector3());
                 }
                 mesh.Draw();
             }

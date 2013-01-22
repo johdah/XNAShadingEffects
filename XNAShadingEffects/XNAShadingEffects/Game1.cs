@@ -91,6 +91,10 @@ namespace XNAShadingEffects
 
             Model snowplowModel = Content.Load<Model>("Models/snowplow");
             sceneManager.Scene.AddEntity(new Snowplow(this, snowplowModel));
+
+            Model sphereModel = Content.Load<Model>("Models/sphere");
+            Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
+            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect));
         }
 
         /// <summary>

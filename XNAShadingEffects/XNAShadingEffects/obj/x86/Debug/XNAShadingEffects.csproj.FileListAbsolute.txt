@@ -7,3 +7,5 @@ c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadin
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\ShaderLibrary.dll
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\ShaderLibrary.pdb
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.csprojResolveAssemblyReference.cache
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\sphere.xnb
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Effects\reflection.xnb

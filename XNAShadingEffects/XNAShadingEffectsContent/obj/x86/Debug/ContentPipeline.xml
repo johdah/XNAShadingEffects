@@ -21,6 +21,35 @@
       <Output>obj\x86\Debug\Models\snowplow_0.xml</Output>
       <Time>2013-01-22T23:30:35.2018106+01:00</Time>
     </Item>
+    <Item>
+      <Source>Models\sphere.fbx</Source>
+      <Name>Models\sphere</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\sphere.xnb</Output>
+      <Time>2013-01-22T23:51:15.6234951+01:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\sphere_0.xml</Key>
+        <Value>2013-01-22T23:52:14.4342242+01:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Effects\reflection.fx</Source>
+      <Name>Effects\reflection</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Effects\reflection.xnb</Output>
+      <Time>2013-01-22T23:51:58.3761269+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\sphere.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\sphere_0.xml</Output>
+      <Time>2013-01-22T23:51:15.6234951+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
