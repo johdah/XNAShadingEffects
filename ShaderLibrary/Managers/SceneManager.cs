@@ -27,6 +27,7 @@ namespace ShaderLibrary.Managers
         public SceneManager(Game game)
         {
             this.game = game;
+            this.currentScene = new Scene(game);
         }
 
         public void Update(GameTime gameTime)

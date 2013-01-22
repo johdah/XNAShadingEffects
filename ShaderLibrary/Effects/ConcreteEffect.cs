@@ -12,6 +12,21 @@ namespace ShaderLibrary.Effects
         #region Fields
 
         private List<BasicEffect> effects = new List<BasicEffect>();
+
+        private EffectParameter ambientColor;
+        private EffectParameter ambientIntensity;
+
+        private EffectParameter diffuseDirection;
+        private EffectParameter diffuseColor;
+        private EffectParameter diffuseIntensity;
+
+        private EffectParameter fogStart;
+        private EffectParameter fogEnd;
+
+        private EffectParameter specularDirection;
+        private EffectParameter specularColor;
+        private EffectParameter specularIntensity;
+
         private EffectParameter projection;
         private EffectParameter view;
         private EffectParameter world;
@@ -81,6 +96,20 @@ namespace ShaderLibrary.Effects
         public ConcreteEffect(Effect source)
             : base(source)
         {
+            ambientColor = this.Parameters["AmbientColor"];
+            ambientIntensity = this.Parameters["AmbientIntensity"];
+
+            diffuseDirection = this.Parameters["DiffuseDirection"];
+            diffuseColor = this.Parameters["DiffuseColor"];
+            diffuseIntensity = this.Parameters["DiffuseIntensity"];
+
+            fogStart = this.Parameters["FogStart"];
+            fogEnd = this.Parameters["FogEnd"];
+
+            specularDirection = this.Parameters["SpecularDirection"];
+            specularColor = this.Parameters["SpecularColor"];
+            specularIntensity = this.Parameters["SpecularIntensity"];
+
             projection = this.Parameters["Projection"];
             view = this.Parameters["View"];
             world = this.Parameters["World"];

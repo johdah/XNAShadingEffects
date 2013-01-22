@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ShaderLibrary.Managers;
+using XNAShadingEffects.Entities;
 
 namespace XNAShadingEffects
 {
@@ -88,7 +89,8 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Model snowplowModel = Content.Load<Model>("Models/snowplow");
+            sceneManager.Scene.AddEntity(new Snowplow(this, snowplowModel));
         }
 
         /// <summary>

@@ -1,1 +1,5 @@
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.dll
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.pdb
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.dll
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.pdb
