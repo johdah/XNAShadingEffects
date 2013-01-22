@@ -15,9 +15,9 @@ namespace ShaderLibrary
         private Game game;
         protected Matrix localWorld = Matrix.Identity;
 
-        private ConcreteEffect effect;
-        private Model model;
-        private Texture2D texture;
+        protected ConcreteEffect effect;
+        protected Model model;
+        protected Texture2D texture;
 
         #endregion
         #region Properties
@@ -50,7 +50,7 @@ namespace ShaderLibrary
 
         public virtual void Draw(Matrix world, Matrix view, Matrix projection, Vector3 cameraPosition)
         {
-            //if (useCustomEffect == true) {
+            if (effect != null) {
                 if (cameraPosition != null)
                 {
                     DrawModelWithEffect(world, view, projection, cameraPosition);
@@ -59,11 +59,11 @@ namespace ShaderLibrary
                 {
                     DrawModelWithEffect(world, view, projection);
                 }
-            /*}
+            }
             else
             {
                 DrawModel(world, view, projection);
-            }*/
+            }
         }
 
         public virtual void DrawModel(Matrix world, Matrix view, Matrix projection)

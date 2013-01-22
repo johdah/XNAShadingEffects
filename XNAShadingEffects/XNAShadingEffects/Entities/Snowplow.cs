@@ -5,6 +5,7 @@ using System.Text;
 using ShaderLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ShaderLibrary.Effects;
 
 namespace XNAShadingEffects.Entities
 {
@@ -14,6 +15,12 @@ namespace XNAShadingEffects.Entities
             : base(model, game)
         {
 
+        }
+
+        public Snowplow(Game game, Model model, Effect effect)
+            : base(model, game)
+        {
+            this.effect = new ConcreteEffect(effect);
         }
     }
 }
