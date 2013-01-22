@@ -1,6 +1,6 @@
 Content\Models\snowplow.xnb
 Content\Models\sphere.xnb
-Content\Effects\reflection.xnb
 Content\Skyboxes\cube.xnb
+Content\Effects\reflection.xnb
 Content\Skyboxes\Skybox.xnb
 Content\Skyboxes\Sunset.xnb

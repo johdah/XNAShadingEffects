@@ -12,3 +12,17 @@ c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadin
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\cube.xnb
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Skybox.xnb
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Sunset.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\snowplow.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\sphere.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\cube.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Effects\reflection.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Skybox.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Sunset.xnb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\XNAShadingEffects.exe
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\XNAShadingEffects.pdb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\ShaderLibrary.dll
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\ShaderLibrary.pdb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.exe
+D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.pdb

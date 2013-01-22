@@ -3,3 +3,9 @@ c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLib
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.pdb
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.dll
 c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.pdb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.dll
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.pdb
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.dll
+D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.pdb

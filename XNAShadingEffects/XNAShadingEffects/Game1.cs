@@ -137,7 +137,7 @@ namespace XNAShadingEffects
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            //skybox.Draw(view, projection, cameraPosition);
+            skybox.Draw(view, projection, cameraPosition);
             renderManager.Draw(sceneManager.Scene, world, view, projection, cameraPosition);
 
             base.Draw(gameTime);
