@@ -1,0 +1,5 @@
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\XNAShadingEffects.exe
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\XNAShadingEffects.pdb
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.exe
+c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.pdb

@@ -18,8 +18,8 @@ namespace ShaderLibrary.Managers
 
         public Scene Scene
         {
-            get { return this.currentScene }
-            set { this.currentScene = value }
+            get { return this.currentScene; }
+            set { this.currentScene = value; }
         }
 
         #endregion
