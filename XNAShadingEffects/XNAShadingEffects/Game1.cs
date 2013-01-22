@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using ShaderLibrary.Managers;
 using XNAShadingEffects.Entities;
 using Shaders;
+using XNAShadingEffects.Input;
 
 namespace XNAShadingEffects
 {
@@ -28,10 +29,8 @@ namespace XNAShadingEffects
         Matrix projection, view;
         Matrix world = Matrix.Identity;
 
-        private Vector3 cameraPosition;
-        private Vector3 cameraTarget;
-        private Vector3 cameraUpVector;
-        private Vector3 viewVector;
+        FlyingCamera fcamera;
+        Camera camera;
 
         Skybox skybox;
 
@@ -53,34 +52,16 @@ namespace XNAShadingEffects
             rs.CullMode = CullMode.None;
             graphics.GraphicsDevice.RasterizerState = rs;
 
-            InitializeCamera();
+            camera = new Camera(GraphicsDevice);
+            fcamera = new FlyingCamera();
+
+            InputHandler ip = new InputHandler(this);
+            Components.Add(ip);
+            Services.AddService(typeof(IInputHandler), ip);
             renderManager = new RenderManager(this);
             sceneManager = new SceneManager(this);
 
             base.Initialize();
-        }
-
-        private void InitializeCamera()
-        {
-            Matrix.CreatePerspectiveFieldOfView(
-                MathHelper.PiOver4,
-                GraphicsDevice.DisplayMode.AspectRatio,
-                0.1f,
-                1000.0f,
-                out projection);
-
-            cameraPosition = new Vector3(0f, 0f, 15f);
-            cameraTarget = new Vector3(0f, 0f, 0f);
-            cameraUpVector = Vector3.Up;
-
-            viewVector = Vector3.Transform(cameraTarget - cameraPosition, Matrix.CreateRotationY(0));
-            viewVector.Normalize();
-
-            Matrix.CreateLookAt(
-               ref cameraPosition,
-               ref cameraTarget,
-               ref cameraUpVector,
-               out view);
         }
 
         /// <summary>
@@ -123,9 +104,24 @@ namespace XNAShadingEffects
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            //Read input
+            IInputHandler inputHandler = (IInputHandler)Services.GetService(typeof(IInputHandler));
+            inputAction(inputHandler.getUnhandledActions(), gameTime.ElapsedGameTime.Milliseconds);
+
+            //To make the camera mov   
+            camera.Update(fcamera.Position, fcamera.Rotation);
+
             sceneManager.Update(gameTime);
 
             base.Update(gameTime);
+        }
+        private void inputAction(List<ActionType> actions, float elapsedTime) {
+            foreach(var action in actions) {
+                if(action == ActionType.Quit)
+                    this.Exit();
+                else
+                    fcamera.PerformAction(action, elapsedTime);
+            }
         }
 
         /// <summary>
@@ -136,9 +132,11 @@ namespace XNAShadingEffects
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            view = camera.ViewMatrix;
+            projection = camera.ProjectionMatrix;
 
-            skybox.Draw(view, projection, cameraPosition);
-            renderManager.Draw(sceneManager.Scene, world, view, projection, cameraPosition);
+            skybox.Draw(view, projection, camera.Position);
+            renderManager.Draw(sceneManager.Scene, world, view, projection, camera.Position);
 
             base.Draw(gameTime);
         }
