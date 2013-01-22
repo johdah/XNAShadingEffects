@@ -50,6 +50,44 @@
       <Output>obj\x86\Debug\Models\sphere_0.xml</Output>
       <Time>2013-01-22T23:51:15.6234951+01:00</Time>
     </Item>
+    <Item>
+      <Source>Skyboxes\cube.fbx</Source>
+      <Name>Skyboxes\cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\cube.xnb</Output>
+      <Time>2013-01-23T00:06:44.6526725+01:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Skyboxes\cube_0.xml</Key>
+        <Value>2013-01-23T00:06:48.88013+01:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Skyboxes\Skybox.fx</Source>
+      <Name>Skyboxes\Skybox</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Skybox.xnb</Output>
+      <Time>2013-01-23T00:12:58.739348+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Skyboxes\Sunset.dds</Source>
+      <Name>Skyboxes\Sunset</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\johan\documents\visual studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Sunset.xnb</Output>
+      <Time>2013-01-23T00:06:36.7075618+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Skyboxes\cube.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Skyboxes\cube_0.xml</Output>
+      <Time>2013-01-23T00:06:44.6526725+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

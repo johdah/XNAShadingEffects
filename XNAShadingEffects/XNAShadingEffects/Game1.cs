@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ShaderLibrary.Managers;
 using XNAShadingEffects.Entities;
+using Shaders;
 
 namespace XNAShadingEffects
 {
@@ -31,6 +32,8 @@ namespace XNAShadingEffects
         private Vector3 cameraTarget;
         private Vector3 cameraUpVector;
         private Vector3 viewVector;
+
+        Skybox skybox;
 
         public Game1()
         {
@@ -89,6 +92,9 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            TextureCube skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
+            skybox = new Skybox(skyboxTexture, Content);
+
             Model snowplowModel = Content.Load<Model>("Models/snowplow");
             sceneManager.Scene.AddEntity(new Snowplow(this, snowplowModel));
 
@@ -130,7 +136,8 @@ namespace XNAShadingEffects
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //Skybox?
+
+            //skybox.Draw(view, projection, cameraPosition);
             renderManager.Draw(sceneManager.Scene, world, view, projection, cameraPosition);
 
             base.Draw(gameTime);
