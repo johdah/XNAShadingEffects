@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using ShaderLibrary.Managers;
 
 namespace XNAShadingEffects
 {
@@ -18,6 +19,17 @@ namespace XNAShadingEffects
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        RenderManager renderManager;
+        SceneManager sceneManager;
+
+        Matrix projection, view;
+        Matrix world = Matrix.Identity;
+
+        private Vector3 cameraPosition;
+        private Vector3 cameraTarget;
+        private Vector3 cameraUpVector;
+        private Vector3 viewVector;
 
         public Game1()
         {
@@ -33,9 +45,38 @@ namespace XNAShadingEffects
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            RasterizerState rs = new RasterizerState();
+            rs.CullMode = CullMode.None;
+            graphics.GraphicsDevice.RasterizerState = rs;
+
+            InitializeCamera();
+            renderManager = new RenderManager(this);
+            sceneManager = new SceneManager(this);
 
             base.Initialize();
+        }
+
+        private void InitializeCamera()
+        {
+            Matrix.CreatePerspectiveFieldOfView(
+                MathHelper.PiOver4,
+                GraphicsDevice.DisplayMode.AspectRatio,
+                0.1f,
+                1000.0f,
+                out projection);
+
+            cameraPosition = new Vector3(0f, 0f, 15f);
+            cameraTarget = new Vector3(0f, 0f, 0f);
+            cameraUpVector = Vector3.Up;
+
+            viewVector = Vector3.Transform(cameraTarget - cameraPosition, Matrix.CreateRotationY(0));
+            viewVector.Normalize();
+
+            Matrix.CreateLookAt(
+               ref cameraPosition,
+               ref cameraTarget,
+               ref cameraUpVector,
+               out view);
         }
 
         /// <summary>
@@ -70,7 +111,7 @@ namespace XNAShadingEffects
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            sceneManager.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -83,7 +124,8 @@ namespace XNAShadingEffects
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            //Skybox?
+            renderManager.Draw(sceneManager.Scene, world, view, projection, cameraPosition);
 
             base.Draw(gameTime);
         }
