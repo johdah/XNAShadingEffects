@@ -6,8 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace XNAShadingEffects.Entities {
-public class Camera
-    {
+    public class Camera {
         private GraphicsDevice device;
         public Vector3 Position { get; set; }
         public Quaternion Rotation { get; set; }
@@ -19,8 +18,7 @@ public class Camera
         public float nearPlaneDistance { get; set; }
         public float farPlaneDistance { get; set; }
 
-        public Camera(GraphicsDevice graphics)
-        {
+        public Camera(GraphicsDevice graphics) {
             this.device = graphics;
 
             //Settings
@@ -35,8 +33,7 @@ public class Camera
                 MathHelper.PiOver4, this.AspectRatio, this.nearPlaneDistance, this.farPlaneDistance);
         }
 
-        public void Update(Vector3 pos, Quaternion rot)
-        {
+        public void Update(Vector3 pos, Quaternion rot) {
             this.Rotation = Quaternion.Lerp(this.Rotation, rot, 0.1f);
 
             Vector3 campos = new Vector3(0, 0, -1f);
@@ -53,4 +50,5 @@ public class Camera
             this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                 MathHelper.PiOver4, this.AspectRatio, this.nearPlaneDistance, this.farPlaneDistance);
         }
+    }
 }
