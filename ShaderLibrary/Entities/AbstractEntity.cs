@@ -13,6 +13,8 @@ namespace ShaderLibrary
         #region Fields
 
         private Game game;
+        protected Matrix localWorld = Matrix.Identity;
+
         private ConcreteEffect effect;
         private Model model;
         private Texture2D texture;
@@ -104,7 +106,7 @@ namespace ShaderLibrary
                 foreach (ModelMeshPart part in mesh.MeshParts)
                 {
                     part.Effect = effect;
-                    effect.Parameters["World"].SetValue((world * objectWorld) * mesh.ParentBone.Transform);
+                    effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
                     effect.Parameters["View"].SetValue(view);
                     effect.Parameters["Projection"].SetValue(projection);
                     effect.Parameters["CameraPosition"].SetValue(camPos);
