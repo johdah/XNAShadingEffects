@@ -46,6 +46,65 @@ namespace ShaderLibrary.Effects
                 effects = value;
             }
         }
+
+        public Color AmbientColor
+        {
+            get
+            {
+                return new Color((Vector4)ambientColor.GetValueVector4());
+            }
+            set
+            {
+                ambientColor.SetValue(((Color)value).ToVector4());
+            }
+        }
+
+        public Vector4 DiffuseColor
+        {
+            get
+            {
+                return diffuseColor.GetValueVector4();
+            }
+            set
+            {
+                diffuseColor.SetValue(value);
+            }
+        }
+        public Vector3 DiffuseDirection
+        {
+            get
+            {
+                return diffuseDirection.GetValueVector3();
+            }
+            set
+            {
+                diffuseDirection.SetValue(value);
+            }
+        }
+
+        public Vector4 SpecularColor
+        {
+            get
+            {
+                return specularColor.GetValueVector4();
+            }
+            set
+            {
+                specularColor.SetValue(value);
+            }
+        }
+        public Vector3 SpecularDirection
+        {
+            get
+            {
+                return specularDirection.GetValueVector3();
+            }
+            set
+            {
+                specularDirection.SetValue(value);
+            }
+        }
+
         public Matrix Projection
         {
             get
