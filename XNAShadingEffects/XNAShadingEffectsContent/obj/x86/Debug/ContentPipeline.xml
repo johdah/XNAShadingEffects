@@ -7,11 +7,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\snowplow.xnb</Output>
-      <Time>2013-01-23T13:28:44.5882187+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\snowplow.xnb</Output>
+      <Time>2013-01-22T23:30:35.2018106+01:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\snowplow_0.xml</Key>
-        <Value>2013-01-23T13:30:09.3690679+01:00</Value>
+        <Value>2013-01-23T16:13:55.5858129+01:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -20,11 +20,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\sphere.xnb</Output>
-      <Time>2013-01-23T13:28:44.5902188+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\sphere.xnb</Output>
+      <Time>2013-01-22T23:51:15.6234951+01:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\sphere_0.xml</Key>
-        <Value>2013-01-23T13:30:09.58108+01:00</Value>
+        <Value>2013-01-23T16:13:55.7788484+01:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -33,11 +33,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\cube.xnb</Output>
-      <Time>2013-01-23T13:28:44.6432218+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\cube.xnb</Output>
+      <Time>2013-01-23T00:14:42.5712458+01:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Skyboxes\cube_0.xml</Key>
-        <Value>2013-01-23T13:30:09.6470838+01:00</Value>
+        <Value>2013-01-23T16:13:55.9298975+01:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -46,8 +46,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Effects\reflection.xnb</Output>
-      <Time>2013-01-23T13:28:44.5822183+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Effects\reflection.xnb</Output>
+      <Time>2013-01-22T23:51:58.3761269+01:00</Time>
     </Item>
     <Item>
       <Source>Skyboxes\Skybox.fx</Source>
@@ -55,8 +55,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Skybox.xnb</Output>
-      <Time>2013-01-23T13:28:44.5902188+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Skybox.xnb</Output>
+      <Time>2013-01-23T00:14:42.5021976+01:00</Time>
     </Item>
     <Item>
       <Source>Skyboxes\Sunset.dds</Source>
@@ -67,29 +67,47 @@
         <Data Key="PremultiplyAlpha">False</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Sunset.xnb</Output>
-      <Time>2013-01-23T13:28:44.6392216+01:00</Time>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Skyboxes\Sunset.xnb</Output>
+      <Time>2013-01-23T00:14:42.5342209+01:00</Time>
     </Item>
     <Item>
       <Source>Models\snowplow.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\snowplow_0.xml</Output>
-      <Time>2013-01-23T13:28:44.5882187+01:00</Time>
+      <Time>2013-01-22T23:30:35.2018106+01:00</Time>
     </Item>
     <Item>
       <Source>Models\sphere.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\sphere_0.xml</Output>
-      <Time>2013-01-23T13:28:44.5902188+01:00</Time>
+      <Time>2013-01-22T23:51:15.6234951+01:00</Time>
     </Item>
     <Item>
       <Source>Skyboxes\cube.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Skyboxes\cube_0.xml</Output>
-      <Time>2013-01-23T13:28:44.6432218+01:00</Time>
+      <Time>2013-01-23T00:14:42.5712458+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Sphere\normalMap.tga</Source>
+      <Name>Models\Sphere\normalMap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\normalMap.xnb</Output>
+      <Time>2013-01-23T16:15:05.7486847+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Sphere\texture.png</Source>
+      <Name>Models\Sphere\texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\texture.xnb</Output>
+      <Time>2013-01-23T16:15:05.9055355+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -97,10 +115,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -129,7 +147,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-01-23T12:59:24.7395611+01:00</Value>
+        <Value>2012-11-13T00:37:47.0305961+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

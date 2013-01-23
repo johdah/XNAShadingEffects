@@ -81,7 +81,7 @@ namespace XNAShadingEffects
 
             Model sphereModel = Content.Load<Model>("Models/sphere");
             Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
-            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect));
+            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect, skyboxTexture));
         }
 
         /// <summary>

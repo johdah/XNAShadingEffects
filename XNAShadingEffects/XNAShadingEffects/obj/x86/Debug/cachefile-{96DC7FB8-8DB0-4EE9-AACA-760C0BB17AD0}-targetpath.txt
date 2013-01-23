@@ -4,3 +4,5 @@ Content\Skyboxes\cube.xnb
 Content\Effects\reflection.xnb
 Content\Skyboxes\Skybox.xnb
 Content\Skyboxes\Sunset.xnb
+Content\Models\Sphere\normalMap.xnb
+Content\Models\Sphere\texture.xnb

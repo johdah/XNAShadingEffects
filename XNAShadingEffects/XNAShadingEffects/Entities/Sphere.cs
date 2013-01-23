@@ -11,16 +11,22 @@ namespace XNAShadingEffects.Entities
 {
     public class Sphere : AbstractEntity
     {
+        private TextureCube reflectionTexture;
+        private Texture2D normalmap;
+
         public Sphere(Game game, Model model)
             : base(model, game)
         {
-
         }
 
-        public Sphere(Game game, Model model, Effect effect)
+        public Sphere(Game game, Model model, Effect effect, TextureCube reflectionTexture)
             : base(model, game)
         {
             this.effect = new ConcreteEffect(effect);
+            this.reflectionTexture = reflectionTexture;
+
+            texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
+            normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");
         }
 
         public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, Vector3 cameraPosition)
@@ -31,12 +37,13 @@ namespace XNAShadingEffects.Entities
                 {
                     part.Effect = effect;
                     effect.Parameters["CameraPosition"].SetValue(cameraPosition);
-                    //effect.Parameters["ModelTexture"].SetValue(texture);
-                    //effect.Parameters["NormalMap"].SetValue(normalMap);
                     //effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector3());
                     //effect.Parameters["FogEnd"].SetValue(20.0f);
                     //effect.Parameters["FogStart"].SetValue(10.0f);
+                    //effect.Parameters["ModelTexture"].SetValue(texture);
+                    //effect.Parameters["NormalMap"].SetValue(normalmap);
                     //effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
+                    effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
 
                     effect.Parameters["Projection"].SetValue(projection);
                     effect.Parameters["View"].SetValue(view);
