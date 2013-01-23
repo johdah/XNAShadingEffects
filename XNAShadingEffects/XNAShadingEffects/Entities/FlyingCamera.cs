@@ -11,7 +11,7 @@ namespace XNAShadingEffects.Entities {
         public Quaternion Rotation { get; set; }
 
         private float TurnSpeed = 0.002f;
-        private float MoveSpeed = 0.02f;
+        private float MoveSpeed = 0.005f;
 
         public FlyingCamera() {
             this.Position = new Vector3(0, 3, 10);

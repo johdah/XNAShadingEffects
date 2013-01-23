@@ -55,7 +55,7 @@ namespace ShaderLibrary.Entities
             }
         }
 
-        public void SetupEffect(ConcreteEffect effect)
+        public void SetupEffect()
         {
             foreach (ModelMesh modelMesh in _model.Meshes)
             {
