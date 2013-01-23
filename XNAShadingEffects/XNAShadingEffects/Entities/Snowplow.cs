@@ -20,7 +20,7 @@ namespace XNAShadingEffects.Entities
         public Snowplow(Game game, Model model, Effect effect)
             : base(model, game)
         {
-            this.effect = new ConcreteEffect(effect);
+            this._effect = new ConcreteEffect(effect);
         }
     }
 }
