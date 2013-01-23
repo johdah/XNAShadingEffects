@@ -196,13 +196,10 @@ namespace XNAShadingEffects
                         }
                 }
 
-                //effect.Parameters["matWorldViewProj"].SetValue(world * view * projection);
-
                 // Set the cubemap render target, using the selected face
                 GraphicsDevice.SetRenderTarget(RefCubeMap, cubeMapFace);
-                //this.GraphicsDevice.SetRenderTarget(0, RefCubeMap, cubeMapFace);
-                //this.GraphicsDevice.Clear(Color.White);
-                //this.DrawScene(false);
+                GraphicsDevice.Clear(Color.CornflowerBlue);
+
                 skybox.Draw(viewMatrix, projection, camera.Position);
                 renderManager.Draw(sceneManager.Scene, world, viewMatrix, projection, skyboxTexture, camera.Position);
             }
