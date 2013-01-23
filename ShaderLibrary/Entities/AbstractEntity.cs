@@ -106,16 +106,16 @@ namespace ShaderLibrary
                 foreach (ModelMeshPart part in mesh.MeshParts)
                 {
                     part.Effect = effect;
-                    effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
-                    effect.Parameters["View"].SetValue(view);
-                    effect.Parameters["Projection"].SetValue(projection);
                     effect.Parameters["CameraPosition"].SetValue(camPos);
+                    effect.Parameters["FogColor"].SetValue(Color.WhiteSmoke.ToVector3());
+                    effect.Parameters["FogEnd"].SetValue(20.0f);
+                    effect.Parameters["FogStart"].SetValue(10.0f);
+                    effect.Parameters["ModelTexture"].SetValue(texture);
+                    effect.Parameters["Projection"].SetValue(projection);
+                    effect.Parameters["View"].SetValue(view);
+                    effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
                     effect.Parameters["WorldInverseTranspose"].SetValue(
                                             Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
-                    effect.Parameters["ModelTexture"].SetValue(texture);
-                    effect.Parameters["FogStart"].SetValue(10.0f);
-                    effect.Parameters["FogEnd"].SetValue(20.0f);
-                    effect.Parameters["FogColor"].SetValue(Color.WhiteSmoke.ToVector3());
                 }
                 mesh.Draw();
             }

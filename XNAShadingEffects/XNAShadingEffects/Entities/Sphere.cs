@@ -42,10 +42,9 @@ namespace XNAShadingEffects.Entities
                     //effect.Parameters["FogStart"].SetValue(10.0f);
                     //effect.Parameters["ModelTexture"].SetValue(texture);
                     //effect.Parameters["NormalMap"].SetValue(normalmap);
-                    //effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
-                    effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
 
                     effect.Parameters["Projection"].SetValue(projection);
+                    effect.Parameters["ReflectedTexture"].SetValue(reflectionTexture);
                     effect.Parameters["View"].SetValue(view);
                     effect.Parameters["World"].SetValue((world * localWorld) * mesh.ParentBone.Transform);
                     effect.Parameters["WorldInverseTranspose"].SetValue(

@@ -6,10 +6,10 @@ float4x4 WorldInverseTranspose;
 float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
  
-Texture SkyboxTexture; 
+Texture ReflectedTexture; 
 samplerCUBE SkyboxSampler = sampler_state 
 { 
-   texture = <SkyboxTexture>; 
+   texture = <ReflectedTexture>; 
    magfilter = LINEAR; 
    minfilter = LINEAR; 
    mipfilter = LINEAR; 
