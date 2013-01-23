@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ShaderLibrary.Managers
 {
@@ -15,11 +16,11 @@ namespace ShaderLibrary.Managers
             this.game = game;
         }
 
-        public void Draw(Scene scene, Matrix world, Matrix view, Matrix projection, Vector3 cameraPosition)
+        public void Draw(Scene scene, Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
         {
             foreach (AbstractEntity entity in scene.Entities)
             {
-                entity.Draw(world, view, projection, cameraPosition);
+                entity.Draw(world, view, projection, reflectionTexture, cameraPosition);
             }
         }
     }

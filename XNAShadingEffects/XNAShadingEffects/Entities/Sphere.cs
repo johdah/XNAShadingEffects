@@ -11,7 +11,6 @@ namespace XNAShadingEffects.Entities
 {
     public class Sphere : AbstractEntity
     {
-        private TextureCube reflectionTexture;
         private Texture2D normalmap;
 
         public Sphere(Game game, Model model)
@@ -19,17 +18,16 @@ namespace XNAShadingEffects.Entities
         {
         }
 
-        public Sphere(Game game, Model model, Effect effect, TextureCube reflectionTexture)
+        public Sphere(Game game, Model model, Effect effect)
             : base(model, game)
         {
             this.effect = new ConcreteEffect(effect);
-            this.reflectionTexture = reflectionTexture;
 
             texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
             normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");
         }
 
-        public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, Vector3 cameraPosition)
+        public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
         {
             foreach (ModelMesh mesh in model.Meshes)
             {

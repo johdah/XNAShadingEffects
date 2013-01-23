@@ -48,12 +48,12 @@ namespace ShaderLibrary
 
         #region Draw
 
-        public virtual void Draw(Matrix world, Matrix view, Matrix projection, Vector3 cameraPosition)
+        public virtual void Draw(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
         {
             if (effect != null) {
                 if (cameraPosition != null)
                 {
-                    DrawModelWithEffect(world, view, projection, cameraPosition);
+                    DrawModelWithEffect(world, view, projection, reflectionTexture, cameraPosition);
                 }
                 else
                 {
@@ -99,14 +99,14 @@ namespace ShaderLibrary
             }
         }
 
-        public virtual void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, Vector3 camPos)
+        public virtual void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
         {
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (ModelMeshPart part in mesh.MeshParts)
                 {
                     part.Effect = effect;
-                    effect.Parameters["CameraPosition"].SetValue(camPos);
+                    effect.Parameters["CameraPosition"].SetValue(cameraPosition);
                     effect.Parameters["FogColor"].SetValue(Color.WhiteSmoke.ToVector3());
                     effect.Parameters["FogEnd"].SetValue(20.0f);
                     effect.Parameters["FogStart"].SetValue(10.0f);

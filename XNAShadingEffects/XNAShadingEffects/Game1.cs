@@ -34,6 +34,10 @@ namespace XNAShadingEffects
 
         Skybox skybox;
 
+        // Reflection
+        RenderTargetCube RefCubeMap;
+        TextureCube skyboxTexture;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -61,6 +65,9 @@ namespace XNAShadingEffects
             renderManager = new RenderManager(this);
             sceneManager = new SceneManager(this);
 
+            // Reflection
+            RefCubeMap = new RenderTargetCube(GraphicsDevice, 256, false, SurfaceFormat.Color, DepthFormat.Depth16, 1, RenderTargetUsage.PreserveContents);
+
             base.Initialize();
         }
 
@@ -73,7 +80,7 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            TextureCube skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
+            skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
 
             Model snowplowModel = Content.Load<Model>("Models/snowplow");
@@ -81,7 +88,7 @@ namespace XNAShadingEffects
 
             Model sphereModel = Content.Load<Model>("Models/sphere");
             Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
-            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect, skyboxTexture));
+            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect));
         }
 
         /// <summary>
@@ -115,6 +122,7 @@ namespace XNAShadingEffects
 
             base.Update(gameTime);
         }
+
         private void inputAction(List<ActionType> actions, float elapsedTime) {
             foreach(var action in actions) {
                 if(action == ActionType.Quit)
@@ -135,10 +143,72 @@ namespace XNAShadingEffects
             view = camera.ViewMatrix;
             projection = camera.ProjectionMatrix;
 
+            TextureCube envMap = GetReflectionCube();
+
             skybox.Draw(view, projection, camera.Position);
-            renderManager.Draw(sceneManager.Scene, world, view, projection, camera.Position);
+            //renderManager.Draw(sceneManager.Scene, world, view, projection, skyboxTexture, camera.Position);
+            renderManager.Draw(sceneManager.Scene, world, view, projection, envMap, camera.Position);
 
             base.Draw(gameTime);
+        }
+
+        private TextureCube GetReflectionCube()
+        {
+            Matrix viewMatrix = Matrix.Identity;
+
+            // Render our cube map, once for each cube face( 6 times ).
+            for (int i = 0; i < 6; i++)
+            {
+                // render the scene to all cubemap faces
+                CubeMapFace cubeMapFace = (CubeMapFace)i;
+
+                switch (cubeMapFace)
+                {
+                    case CubeMapFace.NegativeX:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Left, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.NegativeY:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Down, Vector3.Forward);
+                            break;
+                        }
+                    case CubeMapFace.NegativeZ:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Backward, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.PositiveX:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Right, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.PositiveY:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Up, Vector3.Backward);
+                            break;
+                        }
+                    case CubeMapFace.PositiveZ:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(Vector3.Zero, Vector3.Forward, Vector3.Up);
+                            break;
+                        }
+                }
+
+                //effect.Parameters["matWorldViewProj"].SetValue(world * view * projection);
+
+                // Set the cubemap render target, using the selected face
+                GraphicsDevice.SetRenderTarget(RefCubeMap, cubeMapFace);
+                //this.GraphicsDevice.SetRenderTarget(0, RefCubeMap, cubeMapFace);
+                //this.GraphicsDevice.Clear(Color.White);
+                //this.DrawScene(false);
+                skybox.Draw(viewMatrix, projection, camera.Position);
+                renderManager.Draw(sceneManager.Scene, world, viewMatrix, projection, skyboxTexture, camera.Position);
+            }
+
+            this.GraphicsDevice.SetRenderTarget(null);
+            return RefCubeMap;
         }
     }
 }
