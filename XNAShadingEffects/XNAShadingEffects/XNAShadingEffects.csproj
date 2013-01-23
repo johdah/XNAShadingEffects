@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\FlyingCamera.cs" />
+    <Compile Include="Entities\Helicopter.cs" />
     <Compile Include="Entities\Snowplow.cs" />
     <Compile Include="Entities\Sphere.cs" />
     <Compile Include="Input\ActionType.cs" />

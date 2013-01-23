@@ -35,6 +35,10 @@ namespace XNAShadingEffects
 
         Skybox skybox;
 
+        Model model;
+        Vector3 viewVector;
+        Texture2D texture;
+
         // Reflection
         RenderTargetCube RefCubeMap;
         TextureCube skyboxTexture;
@@ -95,6 +99,9 @@ namespace XNAShadingEffects
             sphere.Position = new Vector3(-4,2,0);
             sceneManager.Scene.AddEntity(sphere);
 
+            Helicopter helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"));
+            helicopta.Position = new Vector3(-4, 10, 0);
+            sceneManager.Scene.AddEntity(helicopta);
         }
 
         /// <summary>
