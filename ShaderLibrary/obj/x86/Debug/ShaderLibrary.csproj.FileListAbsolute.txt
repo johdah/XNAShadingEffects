@@ -9,3 +9,9 @@ D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\R
 D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.dll
 D:\Program\_Programmering\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.pdb
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.dll
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\bin\x86\Debug\ShaderLibrary.pdb
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.dll
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\ShaderLibrary\obj\x86\Debug\ShaderLibrary.pdb

@@ -1,1 +1,2 @@
 D:\Program\_Programmering\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\obj\x86\Debug\ResolveAssemblyReference.cache
