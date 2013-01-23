@@ -88,7 +88,9 @@ namespace XNAShadingEffects
 
             Model sphereModel = Content.Load<Model>("Models/sphere");
             Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
-            sceneManager.Scene.AddEntity(new Sphere(this, sphereModel, reflectionEffect));
+            Sphere sphere = new Sphere(this, sphereModel, reflectionEffect);
+            sphere.Position = new Vector3(-4,2,0);
+            sceneManager.Scene.AddEntity(sphere);
         }
 
         /// <summary>
