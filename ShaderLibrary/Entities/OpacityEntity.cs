@@ -31,7 +31,7 @@ namespace ShaderLibrary.Entities
 
             this.SetupModel();
             //this.SetupEffect();
-            this.SetLighting();
+            //this.SetLighting();
         }
 
         private void SetupModel()
@@ -177,28 +177,33 @@ namespace ShaderLibrary.Entities
             }
         }
 
-        public void SetLighting() {
-            //foreach(ModelMesh modelMesh in _model.Meshes) {
-            //    foreach(Effect effect in modelMesh.Effects) {
-            //        if(effect is IEffectFog) {
-            //            IEffectFog fogEffect = (IEffectFog)effect;
-            //            fogEffect.FogColor = _effect.FogColor;
-            //            fogEffect.FogEnabled = _effect.FogEnabled;
-            //            fogEffect.FogStart = _effect.FogStart;
-            //            fogEffect.FogEnd = _effect.FogEnd;
-            //        }
-            //        if(effect is IEffectLights) {
-            //            IEffectLights lightEffect = (IEffectLights)effect;
-            //            lightEffect.AmbientLightColor = _effect.AmbientLightColor;                        
-            //            lightEffect.LightingEnabled = true;
-            //            lightEffect.DirectionalLight0.Direction = _effect.DirectionalLight0.Direction;
-            //            lightEffect.DirectionalLight0.DiffuseColor = _effect.DirectionalLight0.DiffuseColor;
-            //            lightEffect.DirectionalLight0.Enabled = true;
-            //            lightEffect.DirectionalLight0.SpecularColor = _effect.DirectionalLight0.SpecularColor;                       
-                        
-            //        }
-            //    }
-            //}
+        public void SetLighting(BasicEffect basicEffect) {
+
+            foreach (ModelMesh modelMesh in _model.Meshes)
+            {
+                foreach (Effect effect in modelMesh.Effects)
+                {
+                    if (effect is IEffectFog)
+                    {
+                        IEffectFog fogEffect = (IEffectFog)effect;
+                        fogEffect.FogColor = basicEffect.FogColor;
+                        fogEffect.FogEnabled = basicEffect.FogEnabled;
+                        fogEffect.FogStart = basicEffect.FogStart;
+                        fogEffect.FogEnd = basicEffect.FogEnd;
+                    }
+                    if (effect is IEffectLights)
+                    {
+                        IEffectLights lightEffect = (IEffectLights)effect;
+                        lightEffect.AmbientLightColor = basicEffect.AmbientLightColor;
+                        lightEffect.LightingEnabled = true;
+                        lightEffect.DirectionalLight0.Direction = basicEffect.DirectionalLight0.Direction;
+                        lightEffect.DirectionalLight0.DiffuseColor = basicEffect.DirectionalLight0.DiffuseColor;
+                        lightEffect.DirectionalLight0.Enabled = true;
+                        lightEffect.DirectionalLight0.SpecularColor = basicEffect.DirectionalLight0.SpecularColor;
+
+                    }
+                }
+            }
         }
     }
 }

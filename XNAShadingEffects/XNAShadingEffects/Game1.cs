@@ -85,7 +85,9 @@ namespace XNAShadingEffects
             skybox = new Skybox(skyboxTexture, Content);
 
             Model snowplowModel = Content.Load<Model>("Models/snowplow");
-            sceneManager.Scene.AddEntity(new Snowplow(snowplowModel, this, GraphicsDevice));
+            Snowplow plow = new Snowplow(snowplowModel, this, GraphicsDevice);
+            plow.SetLighting(new BasicEffect(GraphicsDevice));
+            sceneManager.Scene.AddEntity(plow);
 
             Model sphereModel = Content.Load<Model>("Models/sphere");
             Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
