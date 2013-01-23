@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>cube1</Name>
     <Identity>
-      <SourceFilename>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Skyboxes\cube.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Skyboxes\cube.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -25,7 +25,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>default</Name>
       <Identity>
-        <SourceFilename>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Skyboxes\cube.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Skyboxes\cube.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

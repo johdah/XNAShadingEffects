@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>blend_root</Name>
     <Identity>
-      <SourceFilename>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Models\sphere.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Models\sphere.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>100 0 0 0 0 100 0 0 0 0 100 0 0 0 0 1</Transform>
@@ -31,7 +31,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material.001</Name>
       <Identity>
-        <SourceFilename>C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Models\sphere.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffectsContent\Models\sphere.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

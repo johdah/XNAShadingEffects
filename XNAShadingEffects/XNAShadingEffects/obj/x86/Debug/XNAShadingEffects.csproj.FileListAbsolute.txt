@@ -42,3 +42,5 @@ C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShading
 C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\obj\x86\Debug\XNAShadingEffects.pdb
 C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\normalMap.xnb
 C:\Users\Johan\Documents\Visual Studio 2010\Projects\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\texture.xnb
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\normalMap.xnb
+C:\Users\Initech\Documents\GitHub\XNAShadingEffects\XNAShadingEffects\XNAShadingEffects\bin\x86\Debug\Content\Models\Sphere\texture.xnb
