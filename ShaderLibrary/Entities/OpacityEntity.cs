@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using ShaderLibrary.Effects;
 
 namespace ShaderLibrary.Entities
 {
@@ -29,7 +30,7 @@ namespace ShaderLibrary.Entities
             _meshTransform = new Matrix[_model.Meshes.Count];
 
             this.SetupModel();
-            this.SetupEffect();
+            //this.SetupEffect();
             this.SetLighting();
         }
 
@@ -54,7 +55,7 @@ namespace ShaderLibrary.Entities
             }
         }
 
-        private void SetupEffect()
+        public void SetupEffect(ConcreteEffect effect)
         {
             foreach (ModelMesh modelMesh in _model.Meshes)
             {
@@ -62,7 +63,7 @@ namespace ShaderLibrary.Entities
                 {
                     if (modelMeshPart.Effect is BasicEffect)
                     {
-                        BasicEffect basicEffect = (BasicEffect)modelMeshPart.Effect;
+                        BasicEffect basicEffect = (BasicEffect)modelMeshPart.Effect;                        
                         //modelMeshPart.Effect = _effect.Clone();
                         //modelMeshPart.Effect.Alpha = basicEffect.Alpha;
                         //modelMeshPart.Effect.DiffuseColor
@@ -106,6 +107,12 @@ namespace ShaderLibrary.Entities
                 _device.BlendState = BlendState.AlphaBlend;
                 _device.DepthStencilState = DepthStencilState.DepthRead;
                 this.DrawMeshes(_translucentMeshes, view, projection);
+
+                //For future object
+                _device.BlendState = BlendState.Opaque;
+                _device.DepthStencilState = DepthStencilState.Default;
+                _device.RasterizerState = RasterizerState.CullNone;
+
             }
         }
 

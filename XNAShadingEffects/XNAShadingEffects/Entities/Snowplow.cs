@@ -6,21 +6,17 @@ using ShaderLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ShaderLibrary.Effects;
+using ShaderLibrary.Entities;
 
 namespace XNAShadingEffects.Entities
 {
-    public class Snowplow : AbstractEntity
+    public class Snowplow : OpacityEntity
     {
-        public Snowplow(Game game, Model model)
-            : base(model, game)
+        public Snowplow(Model model, Game game, GraphicsDevice device)
+            : base(model, game, device)
         {
+            //this._effect = new ConcreteEffect(effect);
 
-        }
-
-        public Snowplow(Game game, Model model, Effect effect)
-            : base(model, game)
-        {
-            this._effect = new ConcreteEffect(effect);
         }
     }
 }

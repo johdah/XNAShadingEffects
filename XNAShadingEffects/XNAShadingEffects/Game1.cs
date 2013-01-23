@@ -12,6 +12,7 @@ using ShaderLibrary.Managers;
 using XNAShadingEffects.Entities;
 using Shaders;
 using XNAShadingEffects.Input;
+using ShaderLibrary.Entities;
 
 namespace XNAShadingEffects
 {
@@ -84,13 +85,14 @@ namespace XNAShadingEffects
             skybox = new Skybox(skyboxTexture, Content);
 
             Model snowplowModel = Content.Load<Model>("Models/snowplow");
-            sceneManager.Scene.AddEntity(new Snowplow(this, snowplowModel));
+            sceneManager.Scene.AddEntity(new Snowplow(snowplowModel, this, GraphicsDevice));
 
             Model sphereModel = Content.Load<Model>("Models/sphere");
             Effect reflectionEffect = Content.Load<Effect>("Effects/reflection");
             Sphere sphere = new Sphere(this, sphereModel, reflectionEffect);
             sphere.Position = new Vector3(-4,2,0);
             sceneManager.Scene.AddEntity(sphere);
+
         }
 
         /// <summary>
