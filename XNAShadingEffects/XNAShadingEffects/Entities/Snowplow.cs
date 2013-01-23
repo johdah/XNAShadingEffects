@@ -16,7 +16,9 @@ namespace XNAShadingEffects.Entities
             : base(model, game, device)
         {
             //this._effect = new ConcreteEffect(effect);
-
+            _isDoubleSided["Circle"] = true;
+            _isDoubleSided["Circle.004"] = true;
+            _isDoubleSided["Circle.003"] = true;
         }
     }
 }
