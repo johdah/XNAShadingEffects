@@ -87,11 +87,9 @@ namespace XNAShadingEffects
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            spriteBatch = new SpriteBatch(GraphicsDevice);             
             ConcreteEffect effectastic = new ConcreteEffect(Content.Load<Effect>("Effects/effectastic"));
             effectastic.AmbientColor = Color.Violet;            
-            BasicEffect effec = new BasicEffect(GraphicsDevice);
 
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);

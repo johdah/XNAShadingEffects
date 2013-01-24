@@ -53,6 +53,12 @@ float FogStart;
 bool ReflectionEnabled = true;
 float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
+
+//Light
+bool DirectionalLightEnabled = true;
+float3 DirectionalLightDirection = float3(0, -1, 0);
+float3 DirectionalLightDiffuseColor = float3(1, 1, 1);
+float3 DirectionalLightSpecularColor = float3(0, 0, 0);
  
 Texture SkyboxTexture; 
 samplerCUBE SkyboxSampler = sampler_state 

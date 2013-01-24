@@ -15,20 +15,12 @@ namespace XNAShadingEffects.Entities
         public Snowplow(Model model, Game game, ConcreteEffect effect)
             : base(model, game)
         {
-            _effect = new ConcreteEffect(effect);
-            _effect.ReflectionEnabled = false;
-            _effect.BumpEnabled = false;
-            _effect.FogEnabled = false;
-            
-            this.SetupEffect();
-            this.SetLighting();
+           // _effect = new ConcreteEffect(effect);
+            this.SetLighting(effect);
+            //_effect.ReflectionEnabled = true;
+            //_effect.BumpEnabled = true;
+            //_effect.FogEnabled = false;
 
-            //this._effect.Parameters["ReflectionEnabled"].SetValue(false);
-            /*this._effect.Parameters["AmbientIntensity"].SetValue(0);
-            this._effect.Parameters["DiffuseIntensity"].SetValue(0);
-            this._effect.Parameters["DiffuseColor"].SetValue(new Vector4(Color.Violet.ToVector3(), 0));
-            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
-            this._effect.Parameters["SpecularIntensity"].SetValue(0);*/
             _isDoubleSided["Circle"] = true;
             _isDoubleSided["Circle.004"] = true;
             _isDoubleSided["Circle.003"] = true;
