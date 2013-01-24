@@ -14,3 +14,7 @@ Content\Effects\bumpReflection.xnb
 Content\Effects\effectastic.xnb
 Content\Models\Sphere\texture.xnb
 Content\Models\sphere.xnb
+Content\Models\Sphere\sphere_untextured.xnb
+Content\Models\Sphere\sphere_mapped_texture.xnb
+Content\Models\Sphere\sphere_mapped_texture_0.xnb
+Content\Models\Sphere\sphere_mapped.xnb
