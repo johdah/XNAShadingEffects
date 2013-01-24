@@ -17,6 +17,12 @@ float3 ViewVector = float3(1, 0, 0);
  
 float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
+
+bool FogEnabled = true;
+float4 FogColor = float4(0.39, 0.58, 0.93, 1);
+float FogStart;
+float FogEnd;
+float FogDistance;
  
 Texture ReflectedTexture; 
 samplerCUBE SkyboxSampler = sampler_state 
@@ -140,7 +146,15 @@ VertexShaderOutputReflection VertexShaderFunctionReflection(VertexShaderInputRef
  
 float4 PixelShaderFunctionReflection(VertexShaderOutputReflection input) : COLOR0
 {
-    return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+	float affect;
+
+	if(FogEnabled && FogDistance>FogStart)
+		affect = (FogDistance-FogStart)/(FogEnd-FogStart);
+	else
+		 affect = 0;
+
+	return lerp(texCUBE(SkyboxSampler, normalize(input.Reflection)), FogColor, affect);	
+
 }
  
 

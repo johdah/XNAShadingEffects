@@ -39,9 +39,11 @@ namespace XNAShadingEffects.Entities
                     {
                         part.Effect = _effect;
                         _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
-                        //_effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector3());
-                        //_effect.Parameters["FogEnd"].SetValue(20.0f);
-                        //_effect.Parameters["FogStart"].SetValue(10.0f);
+                        _effect.Parameters["FogEnabled"].SetValue(true);
+                        _effect.Parameters["FogDistance"].SetValue(Vector3.Distance(_position,cameraPosition));
+                        _effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector4());
+                        _effect.Parameters["FogEnd"].SetValue(30.0f);
+                        _effect.Parameters["FogStart"].SetValue(20.0f);
                         _effect.Parameters["ReflectedTexture"].SetValue(reflectionTexture);
                         _effect.Parameters["ModelTexture"].SetValue(_texture);
                         _effect.Parameters["NormalMap"].SetValue(normalmap);
