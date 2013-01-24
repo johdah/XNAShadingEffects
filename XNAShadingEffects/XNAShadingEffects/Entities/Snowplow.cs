@@ -12,8 +12,8 @@ namespace XNAShadingEffects.Entities
 {
     public class Snowplow : OpacityEntity
     {
-        public Snowplow(Model model, Game game, GraphicsDevice device, ConcreteEffect effect)
-            : base(model, game, device)
+        public Snowplow(Model model, Game game, ConcreteEffect effect)
+            : base(model, game)
         {
             /*_effect = new ConcreteEffect(effect);
             this._effect.Parameters["AmbientIntensity"].SetValue(0);

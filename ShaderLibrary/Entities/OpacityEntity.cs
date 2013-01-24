@@ -18,10 +18,10 @@ namespace ShaderLibrary.Entities
         private GraphicsDevice _device;
         protected Dictionary<string, Boolean> _isDoubleSided;
 
-        public OpacityEntity(Model model, Game game, GraphicsDevice device)
+        public OpacityEntity(Model model, Game game)
             : base(model, game)
         {
-            _device = device;
+            _device = game.GraphicsDevice;
             _translucentMeshes = new List<AccessMesh>();
             _opaqueMeshes = new List<AccessMesh>();
             _isVisible = new List<Boolean>();

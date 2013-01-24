@@ -95,7 +95,7 @@ namespace XNAShadingEffects
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
 
-            Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, GraphicsDevice, effectastic);
+            Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
             plow.SetLighting(new BasicEffect(GraphicsDevice));
             sceneManager.Scene.AddEntity(plow);
 
