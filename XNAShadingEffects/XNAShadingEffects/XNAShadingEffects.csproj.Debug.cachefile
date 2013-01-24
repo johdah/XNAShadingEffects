@@ -1,4 +1,3 @@
-Content\Models\snowplow.xnb
 Content\Skyboxes\cube.xnb
 Content\Effects\reflection.xnb
 Content\Skyboxes\Skybox.xnb
@@ -18,3 +17,4 @@ Content\Models\Sphere\sphere_untextured.xnb
 Content\Models\Sphere\sphere_mapped_texture.xnb
 Content\Models\Sphere\sphere_mapped_texture_0.xnb
 Content\Models\Sphere\sphere_mapped.xnb
+Content\Models\snowplow.xnb

@@ -12,10 +12,10 @@ namespace XNAShadingEffects.Entities
 {
     public class Snowplow : OpacityEntity
     {
-        public Snowplow(Model model, Game game, GraphicsDevice device)
+        public Snowplow(Model model, Game game, GraphicsDevice device, ConcreteEffect effect)
             : base(model, game, device)
         {
-            //this._effect = new ConcreteEffect(effect);
+            this._effect = effect;
             _isDoubleSided["Circle"] = true;
             _isDoubleSided["Circle.004"] = true;
             _isDoubleSided["Circle.003"] = true;

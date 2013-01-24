@@ -22,10 +22,10 @@ namespace XNAShadingEffects.Entities
             }
         }
 
-        public Sphere(Game game, Model model)
+        public Sphere(Game game, Model model, ConcreteEffect effect)
             : base(model, game, game.GraphicsDevice)
         {
-            _effect = new ConcreteEffect(game.Content.Load<Effect>("Effects/effectastic"));
+            _effect = effect;
             _isDoubleSided["Sphere"] = false;
 
             _texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
