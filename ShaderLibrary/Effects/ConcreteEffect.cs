@@ -13,6 +13,8 @@ namespace ShaderLibrary.Effects
 
         private List<BasicEffect> effects = new List<BasicEffect>();
 
+        private EffectParameter alpha;
+
         private EffectParameter ambientColor;
         private EffectParameter ambientIntensity;
 
@@ -130,6 +132,17 @@ namespace ShaderLibrary.Effects
             set
             {
                 fogColor.SetValue(((Color)value).ToVector3());
+            }
+        }
+        public float Alpha
+        {
+            get
+            {
+                return alpha.GetValueSingle();
+            }
+            set
+            {
+                alpha.SetValue(value);
             }
         }
         public float FogStart
@@ -251,6 +264,7 @@ namespace ShaderLibrary.Effects
         public ConcreteEffect(Effect source)
             : base(source)
         {
+            alpha = this.Parameters["Alpha"];
             ambientColor = this.Parameters["AmbientColor"];
             ambientIntensity = this.Parameters["AmbientIntensity"];
 

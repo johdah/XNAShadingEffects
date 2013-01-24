@@ -16,9 +16,14 @@ namespace XNAShadingEffects.Entities
             : base(model, game)
         {
             _effect = new ConcreteEffect(effect);
+            _effect.ReflectionEnabled = false;
+            _effect.BumpEnabled = false;
+            _effect.FogEnabled = false;
+            
             this.SetupEffect();
             this.SetLighting();
-            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
+
+            //this._effect.Parameters["ReflectionEnabled"].SetValue(false);
             /*this._effect.Parameters["AmbientIntensity"].SetValue(0);
             this._effect.Parameters["DiffuseIntensity"].SetValue(0);
             this._effect.Parameters["DiffuseColor"].SetValue(new Vector4(Color.Violet.ToVector3(), 0));
