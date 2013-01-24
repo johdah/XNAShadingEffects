@@ -149,6 +149,7 @@
       <Name>sphere_mapped</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
     </Compile>
     <Compile Include="Models\Sphere\sphere_untextured.fbx">
       <Name>sphere_untextured</Name>
