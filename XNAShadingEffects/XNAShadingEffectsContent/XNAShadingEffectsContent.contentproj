@@ -57,13 +57,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\reflection.fx">
-      <Name>reflection</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skyboxes\Skybox.fx">
       <Name>Skybox</Name>
       <Importer>EffectImporter</Importer>
@@ -100,13 +93,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\bumpidump.fx">
-      <Name>bumpidump</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Helicopter\Helicopter.fbx">
       <Name>Helicopter</Name>
       <Importer>FbxImporter</Importer>
@@ -129,13 +115,6 @@
       <Name>helicopterTexture</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Effects\bumpReflection.fx">
-      <Name>bumpReflection</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
