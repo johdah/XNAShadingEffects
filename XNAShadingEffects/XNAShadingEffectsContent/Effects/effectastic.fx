@@ -39,6 +39,11 @@ sampler2D bumpSampler = sampler_state {
     AddressV = Wrap;
 };
 
+// Fog
+float3 FogColor;
+float FogEnd;
+float FogStart;
+
 // Reflection
 float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
@@ -77,6 +82,7 @@ struct VertexShaderOutput
     float3 Binormal : TEXCOORD3;
 	// Reflection
     float3 Reflection : TEXCOORD4;
+	float  Interpolation : TEXCOORD5;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -101,6 +107,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	// Textured
 	output.TextureCoordinate = input.TextureCoordinate;
+
+	// Fog
+	output.Interpolation  = saturate((output.Position.z-FogStart)/(FogEnd-FogStart));
 
     return output;
 }
@@ -130,10 +139,11 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     textureColor.a = 1;
 
     // Combine all of these values into one (including the ambient light)
-    //return saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
-	return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
-	//return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection)) * saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
-	//return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection)) * saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
+	float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+	reflectionColor.a = 1;
+
+	float3 tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+    return float4(lerp(tempColor,FogColor,input.Interpolation),1);
 }
 
 technique Effectastic

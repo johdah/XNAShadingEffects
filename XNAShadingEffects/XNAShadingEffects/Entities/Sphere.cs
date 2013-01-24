@@ -59,6 +59,10 @@ namespace XNAShadingEffects.Entities
                     // Reflection
                     _effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
                     _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
+                    // Fog
+                    _effect.Parameters["FogColor"].SetValue(Color.White.ToVector3());
+                    _effect.Parameters["FogEnd"].SetValue(20f);
+                    _effect.Parameters["FogStart"].SetValue(10f);
 
                     //// OLD
                     //_effect.Parameters["CameraPosition"].SetValue(cameraPosition);
