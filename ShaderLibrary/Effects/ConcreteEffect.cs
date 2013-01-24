@@ -16,6 +16,8 @@ namespace ShaderLibrary.Effects
         private EffectParameter ambientColor;
         private EffectParameter ambientIntensity;
 
+        private EffectParameter bumpEnabled;
+
         private EffectParameter directionalLightEnabled;
         private EffectParameter directionalLightDirection;
         private EffectParameter directionalLightDiffuseColor;
@@ -29,6 +31,8 @@ namespace ShaderLibrary.Effects
         private EffectParameter fogStart;
         private EffectParameter fogEnd;
         private EffectParameter fogColor;
+
+        private EffectParameter reflectionEnabled;
 
         private EffectParameter specularDirection;
         private EffectParameter specularColor;
@@ -81,6 +85,28 @@ namespace ShaderLibrary.Effects
                 directionalLightDirection.SetValue(value.Direction);
                 directionalLightEnabled.SetValue(value.Enabled);
                 directionalLightSpecularColor.SetValue(value.SpecularColor);
+            }
+        }
+        public Boolean BumpEnabled
+        {
+            get
+            {
+                return bumpEnabled.GetValueBoolean();
+            }
+            set
+            {
+                bumpEnabled.SetValue(value);
+            }
+        }
+        public Boolean ReflectionEnabled
+        {
+            get
+            {
+                return reflectionEnabled.GetValueBoolean();
+            }
+            set
+            {
+                reflectionEnabled.SetValue(value);
             }
         }
 
@@ -228,6 +254,8 @@ namespace ShaderLibrary.Effects
             ambientColor = this.Parameters["AmbientColor"];
             ambientIntensity = this.Parameters["AmbientIntensity"];
 
+            bumpEnabled = this.Parameters["BumpEnabled"];
+
             directionalLightEnabled = this.Parameters["DirectionalLightEnabled"];
             directionalLightDirection = this.Parameters["DirectionalLightDirection"];
             directionalLightDiffuseColor = this.Parameters["DirectionalLightDiffuseColor"];
@@ -241,6 +269,8 @@ namespace ShaderLibrary.Effects
             fogStart = this.Parameters["FogStart"];
             fogEnd = this.Parameters["FogEnd"];
             fogColor = this.Parameters["FogColor"];
+
+            reflectionEnabled = this.Parameters["ReflectionEnabled"];
 
             specularDirection = this.Parameters["SpecularDirection"];
             specularColor = this.Parameters["SpecularColor"];
