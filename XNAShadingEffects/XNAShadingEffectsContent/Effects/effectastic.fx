@@ -2,6 +2,8 @@ float4x4 World;
 float4x4 View;
 float4x4 Projection;
 
+float Alpha = 1;
+
 // Ambient
 float4 AmbientColor = float4(1, 1, 1, 1);
 float AmbientIntensity = 0.1;
