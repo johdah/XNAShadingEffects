@@ -39,6 +39,21 @@ sampler2D bumpSampler = sampler_state {
     AddressV = Wrap;
 };
 
+// Reflection
+float4 TintColor = float4(1, 1, 1, 1);
+float3 CameraPosition;
+ 
+Texture SkyboxTexture; 
+samplerCUBE SkyboxSampler = sampler_state 
+{ 
+   texture = <SkyboxTexture>; 
+   magfilter = LINEAR; 
+   minfilter = LINEAR; 
+   mipfilter = LINEAR; 
+   AddressU = Mirror;
+   AddressV = Mirror; 
+};
+
 struct VertexShaderInput
 {
     float4 Position : POSITION0;    
@@ -60,6 +75,8 @@ struct VertexShaderOutput
 	// Bump
     float3 Tangent : TEXCOORD2;
     float3 Binormal : TEXCOORD3;
+	// Reflection
+    float3 Reflection : TEXCOORD4;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -70,8 +87,15 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     float4 viewPosition = mul(worldPosition, View);
     output.Position = mul(viewPosition, Projection);
 
+    float4 VertexPosition = mul(input.Position, World);
+    float3 ViewDirection = CameraPosition - VertexPosition;
+
 	// Bump
-    output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
+    float3 Normal = normalize(mul(input.Normal, WorldInverseTranspose));
+    output.Reflection = reflect(-normalize(ViewDirection), normalize(Normal));
+
+	// Other
+    output.Normal = Normal;
     output.Tangent = normalize(mul(input.Tangent, WorldInverseTranspose));
     output.Binormal = normalize(mul(input.Binormal, WorldInverseTranspose));
 
@@ -106,7 +130,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     textureColor.a = 1;
 
     // Combine all of these values into one (including the ambient light)
-    return saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+    //return saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+	return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
 }
 
 technique Effectastic

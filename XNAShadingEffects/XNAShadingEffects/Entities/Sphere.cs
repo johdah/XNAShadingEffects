@@ -46,8 +46,9 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["ModelTexture"].SetValue(_texture);
                     // Bump
                     _effect.Parameters["NormalMap"].SetValue(normalmap);
-
-
+                    // Reflection
+                    _effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
+                    _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
 
                     //// OLD
                     //_effect.Parameters["CameraPosition"].SetValue(cameraPosition);
