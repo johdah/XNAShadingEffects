@@ -16,12 +16,19 @@ namespace ShaderLibrary.Effects
         private EffectParameter ambientColor;
         private EffectParameter ambientIntensity;
 
+        private EffectParameter directionalLightEnabled;
+        private EffectParameter directionalLightDirection;
+        private EffectParameter directionalLightDiffuseColor;
+        private EffectParameter directionalLightSpecularColor;
+
         private EffectParameter diffuseDirection;
         private EffectParameter diffuseColor;
         private EffectParameter diffuseIntensity;
 
+        private EffectParameter fogEnabled;
         private EffectParameter fogStart;
         private EffectParameter fogEnd;
+        private EffectParameter fogColor;
 
         private EffectParameter specularDirection;
         private EffectParameter specularColor;
@@ -58,12 +65,75 @@ namespace ShaderLibrary.Effects
                 ambientColor.SetValue(((Color)value).ToVector4());
             }
         }
-
-        public Vector4 DiffuseColor
+        public DirectionalLight DirectionalLight0
         {
             get
             {
-                return diffuseColor.GetValueVector4();
+                return new DirectionalLight(
+                    directionalLightDirection,
+                    directionalLightDiffuseColor,
+                    directionalLightSpecularColor,
+                    (DirectionalLight)null);
+            }
+            set
+            {
+                directionalLightDiffuseColor.SetValue(value.DiffuseColor);
+                directionalLightDirection.SetValue(value.Direction);
+                directionalLightEnabled.SetValue(value.Enabled);
+                directionalLightSpecularColor.SetValue(value.SpecularColor);
+            }
+        }
+
+        public Boolean FogEnabled
+        {
+            get
+            {
+                return fogEnabled.GetValueBoolean();
+            }
+            set
+            {
+                fogEnabled.SetValue(value);
+            }
+        }
+        public Color FogColor
+        {
+            get
+            {
+                return new Color((Vector4)fogColor.GetValueVector4());
+            }
+            set
+            {
+                fogColor.SetValue(((Color)value).ToVector4());
+            }
+        }
+        public float FogStart
+        {
+            get
+            {
+                return fogStart.GetValueSingle();
+            }
+            set
+            {
+                fogStart.SetValue(value);
+            }
+        }
+        public float FogEnd
+        {
+            get
+            {
+                return fogEnd.GetValueSingle();
+            }
+            set
+            {
+                fogEnd.SetValue(value);
+            }
+        }
+
+        public Vector3 DiffuseColor
+        {
+            get
+            {
+                return diffuseColor.GetValueVector3();
             }
             set
             {
@@ -158,12 +228,19 @@ namespace ShaderLibrary.Effects
             ambientColor = this.Parameters["AmbientColor"];
             ambientIntensity = this.Parameters["AmbientIntensity"];
 
+            directionalLightEnabled = this.Parameters["DirectionalLightEnabled"];
+            directionalLightDirection = this.Parameters["DirectionalLightDirection"];
+            directionalLightDiffuseColor = this.Parameters["DirectionalLightDiffuseColor"];
+            directionalLightSpecularColor = this.Parameters["DirectionalLightSpecularColor"];
+
             diffuseDirection = this.Parameters["DiffuseDirection"];
             diffuseColor = this.Parameters["DiffuseColor"];
             diffuseIntensity = this.Parameters["DiffuseIntensity"];
 
+            fogEnabled = this.Parameters["FogEnabled"];
             fogStart = this.Parameters["FogStart"];
             fogEnd = this.Parameters["FogEnd"];
+            fogColor = this.Parameters["FogColor"];
 
             specularDirection = this.Parameters["SpecularDirection"];
             specularColor = this.Parameters["SpecularColor"];
@@ -173,6 +250,7 @@ namespace ShaderLibrary.Effects
             view = this.Parameters["View"];
             world = this.Parameters["World"];
             worldInverseTranspose = this.Parameters["WorldInverseTranspose"];
+
         }
     }
 }
