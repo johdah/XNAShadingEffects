@@ -34,19 +34,29 @@ namespace XNAShadingEffects.Entities
                 foreach (ModelMeshPart part in mesh.MeshParts)
                 {
                     part.Effect = _effect;
-                    _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
+                    // Basic
+                    _effect.Parameters["Projection"].SetValue(projection);
+                    _effect.Parameters["View"].SetValue(view);
+                    _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
+                    // Diffuse
+                    _effect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world)));
+
+
+
+                    //// OLD
+                    //_effect.Parameters["CameraPosition"].SetValue(cameraPosition);
                     //effect.Parameters["FogColor"].SetValue(Color.CornflowerBlue.ToVector3());
                     //effect.Parameters["FogEnd"].SetValue(20.0f);
                     //effect.Parameters["FogStart"].SetValue(10.0f);
                     //effect.Parameters["ModelTexture"].SetValue(texture);
                     //effect.Parameters["NormalMap"].SetValue(normalmap);
 
-                    _effect.Parameters["Projection"].SetValue(projection);
-                    _effect.Parameters["ReflectedTexture"].SetValue(reflectionTexture);
-                    _effect.Parameters["View"].SetValue(view);
-                    _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
-                    _effect.Parameters["WorldInverseTranspose"].SetValue(
-                                            Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
+                    //_effect.Parameters["Projection"].SetValue(projection);
+                    //_effect.Parameters["ReflectedTexture"].SetValue(reflectionTexture);
+                    //_effect.Parameters["View"].SetValue(view);
+                    //_effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
+                    //_effect.Parameters["WorldInverseTranspose"].SetValue(
+                      //                      Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
                 }
                 mesh.Draw();
             }
