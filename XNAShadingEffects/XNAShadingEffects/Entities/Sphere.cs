@@ -40,6 +40,8 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
                     // Diffuse
                     _effect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world)));
+                    // Specular
+                    _effect.Parameters["ViewVector"].SetValue(Matrix.Invert(view).Translation);
 
 
 
