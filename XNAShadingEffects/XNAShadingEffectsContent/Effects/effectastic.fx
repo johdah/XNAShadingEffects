@@ -44,6 +44,13 @@ sampler2D bumpSampler = sampler_state {
 float3 FogColor;
 float FogEnd;
 float FogStart;
+bool FogEnabled;
+
+//Light
+bool directionalLightEnabled = true;
+float3 directionalLightDirection = float3(0,-1,0);
+float3 directionalLightDiffuseColor = float3(1,1,1);
+float3 directionalLightSpecularColor = float3(0,0,0);
 
 // Reflection
 bool ReflectionEnabled = true;

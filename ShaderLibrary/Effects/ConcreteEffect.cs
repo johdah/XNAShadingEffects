@@ -99,11 +99,11 @@ namespace ShaderLibrary.Effects
         {
             get
             {
-                return new Color((Vector4)fogColor.GetValueVector4());
+                return new Color((Vector3)fogColor.GetValueVector3());
             }
             set
             {
-                fogColor.SetValue(((Color)value).ToVector4());
+                fogColor.SetValue(((Color)value).ToVector3());
             }
         }
         public float FogStart

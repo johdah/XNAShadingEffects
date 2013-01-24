@@ -90,13 +90,13 @@ namespace XNAShadingEffects
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ConcreteEffect effectastic = new ConcreteEffect(Content.Load<Effect>("Effects/effectastic"));
-            effectastic.AmbientColor = Color.Violet;
+            effectastic.AmbientColor = Color.Violet;            
+            BasicEffect effec = new BasicEffect(GraphicsDevice);
 
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
 
             Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
-            plow.SetLighting(new BasicEffect(GraphicsDevice));
             sceneManager.Scene.AddEntity(plow);
 
             sphere = new Sphere(this, Content.Load<Model>("Models/Sphere/sphere_mapped"), effectastic);
