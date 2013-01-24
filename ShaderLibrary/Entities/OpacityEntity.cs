@@ -18,10 +18,10 @@ namespace ShaderLibrary.Entities
         private GraphicsDevice _device;
         protected Dictionary<string, Boolean> _isDoubleSided;
 
-        public OpacityEntity(Model model, Game game, GraphicsDevice device)
+        public OpacityEntity(Model model, Game game)
             : base(model, game)
         {
-            _device = device;
+            _device = game.GraphicsDevice;
             _translucentMeshes = new List<AccessMesh>();
             _opaqueMeshes = new List<AccessMesh>();
             _isVisible = new List<Boolean>();
@@ -64,10 +64,17 @@ namespace ShaderLibrary.Entities
                     if (modelMeshPart.Effect is BasicEffect)
                     {
                         BasicEffect basicEffect = (BasicEffect)modelMeshPart.Effect;                        
-                        //modelMeshPart.Effect = _effect.Clone();
+                        modelMeshPart.Effect = _effect.Clone();
+
+                        modelMeshPart.Effect.Parameters["SpecularColor"].SetValue(new Vector4(basicEffect.SpecularColor, 1));
+                        modelMeshPart.Effect.Parameters["DiffuseColor"].SetValue(new Vector4(basicEffect.DiffuseColor,1));
+                        //modelMeshPart.Effect.Parameters["SpecularPower"].SetValue(basicEffect.SpecularPower);
+                        //_effect.Parameters["SpecularColor"].SetValue(new Vector4(basicEffect.SpecularColor,1));
+
                         //modelMeshPart.Effect.Alpha = basicEffect.Alpha;
-                        //modelMeshPart.Effect.DiffuseColor
-                        //modelMeshPart.Effect.SpecularColor
+                        //_effect.Parameters["SpecularColor"].SetValue(new Vector4(basicEffect.SpecularColor,1));
+                        //((ConcreteEffect)modelMeshPart.Effect).DiffuseColor = basicEffect.DiffuseColor;
+                        //((ConcreteEffect)modelMeshPart.Effect).SpecularColor = new Vector4(basicEffect.SpecularColor,1);
                         //modelMeshPart.Effect.SpecularPower = basicEffect.SpecularPower;                       
                         if (basicEffect.Texture != null)
                         {
@@ -177,7 +184,7 @@ namespace ShaderLibrary.Entities
             }
         }
 
-        public void SetLighting(BasicEffect basicEffect) {
+        public void SetLighting() {
 
             foreach (ModelMesh modelMesh in _model.Meshes)
             {
@@ -186,20 +193,20 @@ namespace ShaderLibrary.Entities
                     if (effect is IEffectFog)
                     {
                         IEffectFog fogEffect = (IEffectFog)effect;
-                        fogEffect.FogColor = basicEffect.FogColor;
-                        fogEffect.FogEnabled = basicEffect.FogEnabled;
-                        fogEffect.FogStart = basicEffect.FogStart;
-                        fogEffect.FogEnd = basicEffect.FogEnd;
+                        fogEffect.FogColor = _effect.FogColor.ToVector3();
+                        fogEffect.FogEnabled = _effect.FogEnabled;
+                        fogEffect.FogStart = _effect.FogStart;
+                        fogEffect.FogEnd = _effect.FogEnd;
                     }
                     if (effect is IEffectLights)
                     {
                         IEffectLights lightEffect = (IEffectLights)effect;
-                        lightEffect.AmbientLightColor = basicEffect.AmbientLightColor;
+                        lightEffect.AmbientLightColor = _effect.AmbientColor.ToVector3();
                         lightEffect.LightingEnabled = true;
-                        lightEffect.DirectionalLight0.Direction = basicEffect.DirectionalLight0.Direction;
-                        lightEffect.DirectionalLight0.DiffuseColor = basicEffect.DirectionalLight0.DiffuseColor;
+                        lightEffect.DirectionalLight0.Direction = _effect.DirectionalLight0.Direction;
+                        lightEffect.DirectionalLight0.DiffuseColor = _effect.DirectionalLight0.DiffuseColor;
                         lightEffect.DirectionalLight0.Enabled = true;
-                        lightEffect.DirectionalLight0.SpecularColor = basicEffect.DirectionalLight0.SpecularColor;
+                        lightEffect.DirectionalLight0.SpecularColor = _effect.DirectionalLight0.SpecularColor;
 
                     }
                 }

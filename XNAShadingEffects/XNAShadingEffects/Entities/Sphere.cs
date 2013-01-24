@@ -23,7 +23,7 @@ namespace XNAShadingEffects.Entities
         }
 
         public Sphere(Game game, Model model, ConcreteEffect effect)
-            : base(model, game, game.GraphicsDevice)
+            : base(model, game)
         {
             _effect = new ConcreteEffect(effect);
             //this._effect.Parameters["AmbientIntensity"].SetValue(0);

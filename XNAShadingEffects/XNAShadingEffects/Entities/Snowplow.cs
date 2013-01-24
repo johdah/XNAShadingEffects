@@ -12,11 +12,14 @@ namespace XNAShadingEffects.Entities
 {
     public class Snowplow : OpacityEntity
     {
-        public Snowplow(Model model, Game game, GraphicsDevice device, ConcreteEffect effect)
-            : base(model, game, device)
+        public Snowplow(Model model, Game game, ConcreteEffect effect)
+            : base(model, game)
         {
-            /*_effect = new ConcreteEffect(effect);
-            this._effect.Parameters["AmbientIntensity"].SetValue(0);
+            _effect = new ConcreteEffect(effect);
+            this.SetupEffect();
+            this.SetLighting();
+            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
+            /*this._effect.Parameters["AmbientIntensity"].SetValue(0);
             this._effect.Parameters["DiffuseIntensity"].SetValue(0);
             this._effect.Parameters["DiffuseColor"].SetValue(new Vector4(Color.Violet.ToVector3(), 0));
             this._effect.Parameters["ReflectionEnabled"].SetValue(false);
