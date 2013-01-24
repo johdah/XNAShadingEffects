@@ -42,6 +42,8 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world)));
                     // Specular
                     _effect.Parameters["ViewVector"].SetValue(Matrix.Invert(view).Translation);
+                    // Textured
+                    _effect.Parameters["ModelTexture"].SetValue(_texture);
 
 
 

@@ -93,7 +93,8 @@ namespace XNAShadingEffects
             plow.SetLighting(new BasicEffect(GraphicsDevice));
             sceneManager.Scene.AddEntity(plow);
 
-            Model sphereModel = Content.Load<Model>("Models/sphere");
+            //Model sphereModel = Content.Load<Model>("Models/sphere");
+            Model sphereModel = Content.Load<Model>("Models/Sphere/sphere_mapped");
             Effect reflectionEffect = Content.Load<Effect>("Effects/effectastic");
             Sphere sphere = new Sphere(this, sphereModel, reflectionEffect);
             sphere.Position = new Vector3(-4,2,0);
