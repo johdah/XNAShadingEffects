@@ -13,6 +13,7 @@ using XNAShadingEffects.Entities;
 using Shaders;
 using XNAShadingEffects.Input;
 using ShaderLibrary.Entities;
+using ShaderLibrary.Effects;
 
 namespace XNAShadingEffects
 {
@@ -88,23 +89,21 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Effect effectastic = Content.Load<Effect>("Effects/effectastic");
+            ConcreteEffect effectastic = new ConcreteEffect(Content.Load<Effect>("Effects/effectastic"));
+            effectastic.AmbientColor = Color.Violet;
 
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
 
-            Model snowplowModel = Content.Load<Model>("Models/snowplow");
-            Snowplow plow = new Snowplow(snowplowModel, this, GraphicsDevice);
+            Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, GraphicsDevice, effectastic);
             plow.SetLighting(new BasicEffect(GraphicsDevice));
             sceneManager.Scene.AddEntity(plow);
 
-            //Model sphereModel = Content.Load<Model>("Models/sphere");
-            Model sphereModel = Content.Load<Model>("Models/Sphere/sphere_mapped");
-            sphere = new Sphere(this, sphereModel);
+            sphere = new Sphere(this, Content.Load<Model>("Models/Sphere/sphere_mapped"), effectastic);
             sphere.Position = new Vector3(8,4,3);
             sceneManager.Scene.AddEntity(sphere);
 
-            helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"));
+            helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"), effectastic);
             helicopta.Position = new Vector3(-4, 10, 0);
             sceneManager.Scene.AddEntity(helicopta);
         }

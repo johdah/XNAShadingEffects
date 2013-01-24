@@ -13,18 +13,12 @@ namespace XNAShadingEffects.Entities
     {
         private Texture2D normalmap;
 
-        public Helicopter(Game game, Model model)
+        public Helicopter(Game game, Model model, ConcreteEffect effect)
             : base(model, game)
         {
-            _effect = new ConcreteEffect(game.Content.Load<Effect>("Effects/effectastic"));
+            _effect = effect;
             _texture = game.Content.Load<Texture2D>("Models/Helicopter/helicopterTexture");
             normalmap = game.Content.Load<Texture2D>("Models/Helicopter/helicopterNormalMap");
-        }
-
-        public Helicopter(Game game, Model model, Effect effect)
-            : base(model, game)
-        {
-            this._effect = new ConcreteEffect(effect);
         }
 
         public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
