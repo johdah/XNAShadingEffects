@@ -160,11 +160,12 @@ namespace XNAShadingEffects
             view = camera.ViewMatrix;
             projection = camera.ProjectionMatrix;
 
-            TextureCube envMap = GetReflectionCube(sphere.BoundingSphere);
+            //TextureCube helicoptaMap = GetReflectionCube(sphere.BoundingSphere);
+            TextureCube sphereMap = GetReflectionCube(sphere.BoundingSphere);
 
             skybox.Draw(view, projection, camera.Position);
             //renderManager.Draw(sceneManager.Scene, world, view, projection, skyboxTexture, camera.Position);
-            renderManager.Draw(sceneManager.Scene, world, view, projection, envMap, camera.Position);
+            renderManager.Draw(sceneManager.Scene, world, view, projection, sphereMap, camera.Position);
 
             base.Draw(gameTime);
         }
@@ -178,6 +179,7 @@ namespace XNAShadingEffects
             {
                 // render the scene to all cubemap faces
                 CubeMapFace cubeMapFace = (CubeMapFace)i;
+                Matrix localProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, GraphicsDevice.Viewport.AspectRatio, 0.01f, 1000f);
                 Vector3 localPos = bounds.Center;
                 Vector3 localFacing = bounds.Center;
 
@@ -231,8 +233,8 @@ namespace XNAShadingEffects
                 GraphicsDevice.SetRenderTarget(RefCubeMap, cubeMapFace);
                 GraphicsDevice.Clear(Color.CornflowerBlue);
 
-                skybox.Draw(viewMatrix, projection, camera.Position);
-                renderManager.Draw(sceneManager.Scene, world, viewMatrix, projection, skyboxTexture, camera.Position);
+                skybox.Draw(viewMatrix, localProjection, localPos);
+                renderManager.Draw(sceneManager.Scene, world, viewMatrix, localProjection, skyboxTexture, localPos);
             }
 
             this.GraphicsDevice.SetRenderTarget(null);
