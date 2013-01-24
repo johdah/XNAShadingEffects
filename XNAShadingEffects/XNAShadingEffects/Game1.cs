@@ -88,6 +88,8 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Effect effectastic = Content.Load<Effect>("Effects/effectastic");
+
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
 
@@ -98,8 +100,7 @@ namespace XNAShadingEffects
 
             //Model sphereModel = Content.Load<Model>("Models/sphere");
             Model sphereModel = Content.Load<Model>("Models/Sphere/sphere_mapped");
-            Effect reflectionEffect = Content.Load<Effect>("Effects/effectastic");
-            sphere = new Sphere(this, sphereModel, reflectionEffect);
+            sphere = new Sphere(this, sphereModel);
             sphere.Position = new Vector3(8,4,3);
             sceneManager.Scene.AddEntity(sphere);
 

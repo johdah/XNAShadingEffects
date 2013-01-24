@@ -16,7 +16,7 @@ namespace XNAShadingEffects.Entities
         public Helicopter(Game game, Model model)
             : base(model, game)
         {
-            _effect = new ConcreteEffect(game.Content.Load<Effect>("Effects/bumpReflection"));  //bumpidump
+            _effect = new ConcreteEffect(game.Content.Load<Effect>("Effects/effectastic"));
             _texture = game.Content.Load<Texture2D>("Models/Helicopter/helicopterTexture");
             normalmap = game.Content.Load<Texture2D>("Models/Helicopter/helicopterNormalMap");
         }
@@ -38,7 +38,27 @@ namespace XNAShadingEffects.Entities
                     foreach (ModelMeshPart part in mesh.MeshParts)
                     {
                         part.Effect = _effect;
+
+                        // Basic
+                        _effect.Parameters["Projection"].SetValue(projection);
+                        _effect.Parameters["View"].SetValue(view);
+                        _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
+                        // Diffuse
+                        _effect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world)));
+                        // Specular
+                        _effect.Parameters["ViewVector"].SetValue(Matrix.Invert(view).Translation);
+                        // Textured
+                        _effect.Parameters["ModelTexture"].SetValue(_texture);
+                        // Bump
+                        _effect.Parameters["NormalMap"].SetValue(normalmap);
+                        // Reflection
+                        _effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
                         _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
+                        // Fog
+                        _effect.Parameters["FogColor"].SetValue(Color.White.ToVector3());
+                        _effect.Parameters["FogEnd"].SetValue(20f);
+                        _effect.Parameters["FogStart"].SetValue(10f);
+                        /*_effect.Parameters["CameraPosition"].SetValue(cameraPosition);
                         _effect.Parameters["FogEnabled"].SetValue(true);
                         _effect.Parameters["FogDistance"].SetValue(Vector3.Distance(_position,cameraPosition));
                         _effect.Parameters["FogColor"].SetValue(Color.DarkGoldenrod.ToVector4());
@@ -52,7 +72,7 @@ namespace XNAShadingEffects.Entities
                         _effect.Parameters["ViewVector"].SetValue(view.Backward);
                         _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
                         _effect.Parameters["WorldInverseTranspose"].SetValue(
-                                                Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
+                                                Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));*/
                     }
                     mesh.Draw();
                 }
