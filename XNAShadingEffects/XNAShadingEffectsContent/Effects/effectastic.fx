@@ -2,6 +2,8 @@ float4x4 World;
 float4x4 View;
 float4x4 Projection;
 
+// Ambient
+bool AmbientEnabled = true;
 float4 AmbientColor = float4(1, 1, 1, 1);
 float AmbientIntensity = 0.1;
 
@@ -45,6 +47,7 @@ float FogEnd;
 float FogStart;
 
 // Reflection
+bool ReflectionEnabled = true;
 float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
  
@@ -138,11 +141,18 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
     textureColor.a = 1;
 
+	float3 ambient = 0;
+	if(AmbientEnabled) {
+		ambient = AmbientColor * AmbientIntensity;
+	}
+	float3 tempColor = saturate(diffuseIntensity + ambient + specular);
     // Combine all of these values into one (including the ambient light)
-	float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
-	reflectionColor.a = 1;
+	if(ReflectionEnabled) {
+		float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+		reflectionColor.a = 1;
 
-	float3 tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+		tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+	}
     return float4(lerp(tempColor,FogColor,input.Interpolation),1);
 }
 
