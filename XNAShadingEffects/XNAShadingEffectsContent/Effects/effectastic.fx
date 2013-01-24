@@ -30,6 +30,7 @@ sampler2D textureSampler = sampler_state {
 };
 
 // Bump
+bool BumpEnabled = true;
 float BumpConstant = 1;
 texture NormalMap;
 sampler2D bumpSampler = sampler_state {
@@ -41,6 +42,7 @@ sampler2D bumpSampler = sampler_state {
 };
 
 // Fog
+bool FogEnabled = true;
 float3 FogColor;
 float FogEnd;
 float FogStart;
@@ -124,7 +126,10 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     bumpNormal = normalize(bumpNormal);
 
     // Calculate the diffuse light component with the bump map normal
-    float diffuseIntensity = dot(normalize(DiffuseLightDirection), bumpNormal);
+	float diffuseIntensity = normalize(DiffuseLightDirection);
+	if(BumpEnabled) {
+		diffuseIntensity = dot(normalize(DiffuseLightDirection), bumpNormal);
+	}
     if(diffuseIntensity < 0)
         diffuseIntensity = 0;
 
@@ -141,14 +146,19 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     textureColor.a = 1;
 
 	float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
-    // Combine all of these values into one (including the ambient light)
+
 	if(ReflectionEnabled) {
 		float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
 		reflectionColor.a = 1;
 
-		tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+		tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 	}
-    return float4(lerp(tempColor,FogColor,input.Interpolation),1);
+
+	if(FogEnabled) {
+		return float4(lerp(tempColor,FogColor,input.Interpolation),1);
+	} else {
+		return float4(tempColor, 1);
+	}
 }
 
 technique Effectastic
