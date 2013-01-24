@@ -194,7 +194,7 @@ namespace XNAShadingEffects
                         }
                     case CubeMapFace.NegativeY:
                         {
-                            localPos.Y -= bounds.Radius;
+                            localPos.Y -= bounds.Radius + 1;
                             localFacing.Y = Int16.MinValue;
                             viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Forward);
                             break;
@@ -208,7 +208,7 @@ namespace XNAShadingEffects
                         }
                     case CubeMapFace.PositiveX:
                         {
-                            localPos.X += bounds.Radius;
+                            localPos.X += bounds.Radius + 6;
                             localFacing.X = Int16.MaxValue;
                             viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Up);
                             break;
