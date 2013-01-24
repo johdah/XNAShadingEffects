@@ -148,11 +148,14 @@ float4 PixelShaderFunctionReflection(VertexShaderOutputReflection input) : COLOR
 {
 	float affect;
 
-	if(FogEnabled && FogDistance>FogStart)
+	if(FogEnabled && FogDistance>FogStart){
 		affect = (FogDistance-FogStart)/(FogEnd-FogStart);
-	else
+		if(FogDistance>FogEnd)
+			affect = 1;
+	}
+	else {
 		 affect = 0;
-
+	}
 	return lerp(texCUBE(SkyboxSampler, normalize(input.Reflection)), FogColor, affect);	
 
 }
