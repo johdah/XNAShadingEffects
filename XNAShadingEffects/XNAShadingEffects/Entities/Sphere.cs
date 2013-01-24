@@ -6,22 +6,32 @@ using Microsoft.Xna.Framework;
 using ShaderLibrary;
 using Microsoft.Xna.Framework.Graphics;
 using ShaderLibrary.Effects;
+using ShaderLibrary.Entities;
 
 namespace XNAShadingEffects.Entities
 {
-    public class Sphere : AbstractEntity
+    public class Sphere : OpacityEntity
     {
         private Texture2D normalmap;
 
+        public BoundingSphere BoundingSphere
+        {
+            get
+            {
+                return _model.Meshes["Sphere"].BoundingSphere;
+            }
+        }
+
         public Sphere(Game game, Model model)
-            : base(model, game)
+            : base(model, game, game.GraphicsDevice)
         {
         }
 
         public Sphere(Game game, Model model, Effect effect)
-            : base(model, game)
+            : base(model, game, game.GraphicsDevice)
         {
             this._effect = new ConcreteEffect(effect);
+            _isDoubleSided["Sphere"] = false;
 
             _texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
             normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");

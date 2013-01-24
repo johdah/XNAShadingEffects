@@ -132,6 +132,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     // Combine all of these values into one (including the ambient light)
     //return saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
 	return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+	//return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection)) * saturate(textureColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+	//return TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection)) * saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
 }
 
 technique Effectastic
