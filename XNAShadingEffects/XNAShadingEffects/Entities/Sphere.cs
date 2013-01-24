@@ -44,6 +44,8 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["ViewVector"].SetValue(Matrix.Invert(view).Translation);
                     // Textured
                     _effect.Parameters["ModelTexture"].SetValue(_texture);
+                    // Bump
+                    _effect.Parameters["NormalMap"].SetValue(normalmap);
 
 
 
