@@ -3,7 +3,6 @@ float4x4 View;
 float4x4 Projection;
 
 // Ambient
-bool AmbientEnabled = true;
 float4 AmbientColor = float4(1, 1, 1, 1);
 float AmbientIntensity = 0.1;
 
@@ -141,11 +140,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
     textureColor.a = 1;
 
-	float3 ambient = 0;
-	if(AmbientEnabled) {
-		ambient = AmbientColor * AmbientIntensity;
-	}
-	float3 tempColor = saturate(diffuseIntensity + ambient + specular);
+	float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
     // Combine all of these values into one (including the ambient light)
 	if(ReflectionEnabled) {
 		float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
