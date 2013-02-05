@@ -75,7 +75,8 @@ namespace XNAShadingEffects
             sceneManager = new SceneManager(this);
 
             // Reflection
-            RefCubeMap = new RenderTargetCube(GraphicsDevice, 256, false, SurfaceFormat.Color, DepthFormat.Depth16, 1, RenderTargetUsage.PreserveContents);
+            //RefCubeMap = new RenderTargetCube(GraphicsDevice, 256, false, SurfaceFormat.Color, DepthFormat.Depth16, 1, RenderTargetUsage.PreserveContents);
+            RefCubeMap = new RenderTargetCube(this.GraphicsDevice, 512, false, SurfaceFormat.Color, DepthFormat.None);
 
             base.Initialize();
         }
@@ -179,13 +180,13 @@ namespace XNAShadingEffects
         private TextureCube GetReflectionCube(BoundingSphere bounds)
         {
             Matrix viewMatrix = Matrix.Identity;
+            Matrix localProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, GraphicsDevice.Viewport.AspectRatio, 0.01f, 1000f);
 
             // Render our cube map, once for each cube face( 6 times ).
             for (int i = 0; i < 6; i++)
             {
                 // render the scene to all cubemap faces
                 CubeMapFace cubeMapFace = (CubeMapFace)i;
-                Matrix localProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, GraphicsDevice.Viewport.AspectRatio, 0.01f, 1000f);
                 Vector3 localPos = bounds.Center;
                 Vector3 localFacing = bounds.Center;
 
@@ -193,44 +194,44 @@ namespace XNAShadingEffects
                 {
                     case CubeMapFace.NegativeX:
                         {
-                            localPos.X -= bounds.Radius;
+                            //localPos.X -= bounds.Radius;
                             localFacing.X = Int16.MinValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Left, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.NegativeY:
                         {
-                            localPos.Y -= bounds.Radius + 1;
+                            //localPos.Y -= bounds.Radius + 1;
                             localFacing.Y = Int16.MinValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Forward);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Down, Vector3.Forward);
                             break;
                         }
                     case CubeMapFace.NegativeZ:
                         {
-                            localPos.Z -= bounds.Radius;
+                            //localPos.Z -= bounds.Radius;
                             localFacing.Z = Int16.MinValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Backward, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveX:
                         {
-                            localPos.X += bounds.Radius + 6;
+                            //localPos.X += bounds.Radius + 6;
                             localFacing.X = Int16.MaxValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Right, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveY:
                         {
-                            localPos.Y += bounds.Radius;
+                            //localPos.Y += bounds.Radius;
                             localFacing.Y = Int16.MaxValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Backward);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Up, Vector3.Backward);
                             break;
                         }
                     case CubeMapFace.PositiveZ:
                         {
-                            localPos.Z += bounds.Radius;
+                            //localPos.Z += bounds.Radius;
                             localFacing.Z = Int16.MaxValue;
-                            viewMatrix = Matrix.CreateLookAt(localPos, localFacing, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Forward, Vector3.Up);
                             break;
                         }
                 }
