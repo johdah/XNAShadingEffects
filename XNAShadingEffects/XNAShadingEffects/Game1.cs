@@ -108,6 +108,9 @@ namespace XNAShadingEffects
             helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"), effectastic);
             helicopta.Position = new Vector3(-4, 10, 0);
             sceneManager.Scene.AddEntity(helicopta);
+
+            //Sets lightning for whole scene
+            sceneManager.Scene.SetLightning(effectastic);
         }
 
         /// <summary>

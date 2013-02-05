@@ -151,7 +151,7 @@ namespace ShaderLibrary.Entities
             }
         }
 
-        public void SetLighting(ConcreteEffect conceffect) {
+        public override void SetLighting(ConcreteEffect conceffect) {
             BasicEffect light = new BasicEffect(_device);
 
             light.FogEnabled = conceffect.FogEnabled;

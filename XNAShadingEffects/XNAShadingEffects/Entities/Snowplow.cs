@@ -16,7 +16,7 @@ namespace XNAShadingEffects.Entities
             : base(model, game)
         {
            // _effect = new ConcreteEffect(effect);
-            this.SetLighting(effect);
+            //this.SetLighting(effect);
             //_effect.ReflectionEnabled = true;
             //_effect.BumpEnabled = true;
             //_effect.FogEnabled = false;

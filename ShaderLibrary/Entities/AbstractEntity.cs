@@ -61,6 +61,10 @@ namespace ShaderLibrary
         {
         }
 
+        public virtual void SetLighting(ConcreteEffect conceffect)
+        {
+        }
+
         #region Draw
 
         public virtual void Draw(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition, RenderPass pass)

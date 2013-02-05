@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using ShaderLibrary.Effects;
 
 namespace ShaderLibrary.Managers
 {
@@ -34,6 +35,12 @@ namespace ShaderLibrary.Managers
         {
             this.game = game;
             this.entities = new List<AbstractEntity>();
+        }
+
+        public void SetLightning(ConcreteEffect effect) {
+            foreach(AbstractEntity item in entities) {
+                item.SetLighting(effect);
+            }
         }
 
 
