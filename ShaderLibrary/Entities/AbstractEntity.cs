@@ -77,10 +77,6 @@ namespace ShaderLibrary
                     {
                         DrawModelWithEffect(world, view, projection, reflectionTexture, cameraPosition);
                     }
-                    else
-                    {
-                        DrawModelWithEffect(world, view, projection);
-                    }
                 }
                 else
                 {
@@ -90,58 +86,11 @@ namespace ShaderLibrary
         }
 
         public virtual void DrawModel(Matrix world, Matrix view, Matrix projection, RenderPass pass)
-        {
-            foreach (ModelMesh mesh in _model.Meshes)
-            {
-                foreach (BasicEffect basicEffect in mesh.Effects)
-                {
-                    //basicEffect.Alpha
-                    basicEffect.EnableDefaultLighting();
-                    basicEffect.PreferPerPixelLighting = true;
-                    basicEffect.Projection = projection;
-                    basicEffect.View = view;
-                    basicEffect.World = world * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position);
-                }
-                mesh.Draw();
-            }
-        }
-
-        public virtual void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection)
-        {
-            foreach (ModelMesh mesh in _model.Meshes)
-            {
-                foreach (ModelMeshPart part in mesh.MeshParts)
-                {
-                    part.Effect = _effect;
-                    _effect.Projection = projection;
-                    _effect.View = view;
-                    _effect.World = Matrix.Identity * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position);
-                    _effect.WorldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
-                }
-                mesh.Draw();
-            }
+        {           
         }
 
         public virtual void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
-        {
-            foreach (ModelMesh mesh in _model.Meshes)
-            {
-                foreach (ModelMeshPart part in mesh.MeshParts)
-                {
-                    part.Effect = _effect;
-                    _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
-                    _effect.Parameters["FogColor"].SetValue(Color.WhiteSmoke.ToVector3());
-                    _effect.Parameters["FogEnd"].SetValue(20.0f);
-                    _effect.Parameters["FogStart"].SetValue(10.0f);
-                    _effect.Parameters["ModelTexture"].SetValue(_texture);
-                    _effect.Parameters["Projection"].SetValue(projection);
-                    _effect.Parameters["View"].SetValue(view);
-                    _effect.Parameters["World"].SetValue((world * _localWorld) * mesh.ParentBone.Transform * Matrix.CreateTranslation(_position));
-                    _effect.Parameters["WorldInverseTranspose"].SetValue(
-                                            Matrix.Transpose(Matrix.Invert(world * mesh.ParentBone.Transform)));
-                }
-                mesh.Draw();
-            }
+        {            
         }
 
         #endregion
