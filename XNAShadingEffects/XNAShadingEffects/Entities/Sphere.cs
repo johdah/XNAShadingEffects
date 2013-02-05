@@ -38,6 +38,8 @@ namespace XNAShadingEffects.Entities
 
         public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
         {
+            RasterizerState previous = _device.RasterizerState;
+            _device.RasterizerState = RasterizerState.CullCounterClockwise;
             foreach (ModelMesh mesh in _model.Meshes)
             {
                 foreach (ModelMeshPart part in mesh.MeshParts)
@@ -66,6 +68,7 @@ namespace XNAShadingEffects.Entities
                 }
                 mesh.Draw();
             }
+            _device.RasterizerState = previous;
         }
     }
 }

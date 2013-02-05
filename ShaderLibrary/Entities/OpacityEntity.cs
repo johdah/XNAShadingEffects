@@ -16,7 +16,7 @@ namespace ShaderLibrary.Entities
 
         private List<Boolean> _isVisible;
         private Matrix[] _meshTransform;
-        private GraphicsDevice _device;
+        protected GraphicsDevice _device;
         protected Dictionary<string, Boolean> _isDoubleSided;
 
         public OpacityEntity(Model model, Game game)
