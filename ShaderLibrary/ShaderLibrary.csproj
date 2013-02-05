@@ -96,6 +96,7 @@
     <Compile Include="Entities\AbstractEntity.cs" />
     <Compile Include="Entities\OpacityEntity.cs" />
     <Compile Include="Managers\RenderManager.cs" />
+    <Compile Include="Managers\RenderPass.cs" />
     <Compile Include="Managers\Scene.cs" />
     <Compile Include="Managers\SceneManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

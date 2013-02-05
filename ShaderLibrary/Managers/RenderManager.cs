@@ -16,11 +16,11 @@ namespace ShaderLibrary.Managers
             this.game = game;
         }
 
-        public void Draw(Scene scene, Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
+        public void Draw(Scene scene, Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition, RenderPass pass)
         {
             foreach (AbstractEntity entity in scene.Entities)
             {
-                entity.Draw(world, view, projection, reflectionTexture, cameraPosition);
+                entity.Draw(world, view, projection, reflectionTexture, cameraPosition, pass);
             }
         }
     }

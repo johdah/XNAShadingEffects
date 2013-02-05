@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ShaderLibrary.Effects;
+using ShaderLibrary.Managers;
 
 namespace ShaderLibrary.Entities
 {
@@ -65,20 +66,22 @@ namespace ShaderLibrary.Entities
             return result;
         }
 
-        public override void DrawModel(Matrix world, Matrix view, Matrix projection)
+        public override void DrawModel(Matrix world, Matrix view, Matrix projection, RenderPass pass)
         {
             if (_visible)
             {
-                //Draw all opaque
-                _device.BlendState = BlendState.Opaque;
-                _device.DepthStencilState = DepthStencilState.Default;
-                this.DrawMeshes(_opaqueMeshes, view, projection);
-
-                //Draw all translucent
-                _device.BlendState = BlendState.AlphaBlend;
-                _device.DepthStencilState = DepthStencilState.DepthRead;
-                this.DrawMeshes(_translucentMeshes, view, projection);
-
+                if(pass == RenderPass.Opaque) {
+                    //Draw all opaque
+                    _device.BlendState = BlendState.Opaque;
+                    _device.DepthStencilState = DepthStencilState.Default;
+                    this.DrawMeshes(_opaqueMeshes, view, projection);
+                }
+                else {
+                    //Draw all translucent
+                    _device.BlendState = BlendState.AlphaBlend;
+                    _device.DepthStencilState = DepthStencilState.DepthRead;
+                    this.DrawMeshes(_translucentMeshes, view, projection);
+                }
                 //For future object
                 _device.BlendState = BlendState.Opaque;
                 _device.DepthStencilState = DepthStencilState.Default;
