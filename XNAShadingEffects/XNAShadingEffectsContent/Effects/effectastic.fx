@@ -55,6 +55,7 @@ float4 TintColor = float4(1, 1, 1, 1);
 float3 CameraPosition;
 
 //Light
+bool LightningEnabled = true;
 bool DirectionalLightEnabled = true;
 float3 DirectionalLightDirection = float3(0, -1, 0);
 float3 DirectionalLightDiffuseColor = float3(1, 1, 1);
@@ -161,7 +162,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		reflectionColor.a = 1;
 
 		tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
-		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular);
+		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular); // BUG??
 	}
 
 	if(FogEnabled) {
