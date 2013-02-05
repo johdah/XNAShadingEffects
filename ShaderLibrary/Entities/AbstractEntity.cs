@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ShaderLibrary.Effects;
+using ShaderLibrary.Managers;
 
 namespace ShaderLibrary
 {
@@ -62,7 +63,7 @@ namespace ShaderLibrary
 
         #region Draw
 
-        public virtual void Draw(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
+        public virtual void Draw(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition, RenderPass pass)
         {
             if (_visible)
             {
@@ -79,12 +80,12 @@ namespace ShaderLibrary
                 }
                 else
                 {
-                    DrawModel(world, view, projection);
+                    DrawModel(world, view, projection, pass);
                 }
             }
         }
 
-        public virtual void DrawModel(Matrix world, Matrix view, Matrix projection)
+        public virtual void DrawModel(Matrix world, Matrix view, Matrix projection, RenderPass pass)
         {
             foreach (ModelMesh mesh in _model.Meshes)
             {

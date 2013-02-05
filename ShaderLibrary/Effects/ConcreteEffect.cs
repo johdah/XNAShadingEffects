@@ -23,11 +23,13 @@ namespace ShaderLibrary.Effects
         private EffectParameter directionalLightEnabled;
         private EffectParameter directionalLightDirection;
         private EffectParameter directionalLightDiffuseColor;
-        private EffectParameter directionalLightSpecularColor;
+        private EffectParameter directionalLightSpecularColor;       
 
         private EffectParameter diffuseDirection;
         private EffectParameter diffuseColor;
         private EffectParameter diffuseIntensity;
+
+        private EffectParameter lightningEnabled;
 
         private EffectParameter fogEnabled;
         private EffectParameter fogStart;
@@ -87,6 +89,17 @@ namespace ShaderLibrary.Effects
                 directionalLightDirection.SetValue(value.Direction);
                 directionalLightEnabled.SetValue(value.Enabled);
                 directionalLightSpecularColor.SetValue(value.SpecularColor);
+            }
+        }
+        public Boolean LightningEnabled
+        {
+            get
+            {
+                return lightningEnabled.GetValueBoolean();
+            }
+            set
+            {
+                lightningEnabled.SetValue(value);
             }
         }
         public Boolean BumpEnabled
@@ -258,6 +271,50 @@ namespace ShaderLibrary.Effects
                 worldInverseTranspose.SetValue(value);
             }
         }
+        public Vector3 DirectionalLightSpecularColor
+        {
+            get
+            {
+                return directionalLightSpecularColor.GetValueVector3();
+            }
+            set
+            {
+                directionalLightSpecularColor.SetValue(value);
+            }
+        }
+        public Vector3 DirectionalLightDiffuseColor
+        {
+            get
+            {
+                return directionalLightDiffuseColor.GetValueVector3();
+            }
+            set
+            {
+                directionalLightDiffuseColor.SetValue(value);
+            }
+        }
+        public Boolean DirectionalLightEnabled
+        {
+            get
+            {
+                return directionalLightEnabled.GetValueBoolean();
+            }
+            set
+            {
+                directionalLightEnabled.SetValue(value);
+            }
+        }
+        public Vector3 DirectionalLightDirection
+        {
+            get
+            {
+                return directionalLightDirection.GetValueVector3();
+            }
+            set
+            {
+                directionalLightDirection.SetValue(value);
+            }
+        }
 
         #endregion
 
@@ -278,6 +335,8 @@ namespace ShaderLibrary.Effects
             diffuseDirection = this.Parameters["DiffuseDirection"];
             diffuseColor = this.Parameters["DiffuseColor"];
             diffuseIntensity = this.Parameters["DiffuseIntensity"];
+
+            lightningEnabled = this.Parameters["LightningEnabled"];
 
             fogEnabled = this.Parameters["FogEnabled"];
             fogStart = this.Parameters["FogStart"];

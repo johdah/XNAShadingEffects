@@ -97,6 +97,10 @@ namespace XNAShadingEffects
             Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
             sceneManager.Scene.AddEntity(plow);
 
+            Snowplow plow2 = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
+            plow2.Position += new Vector3(0,0,5);
+            sceneManager.Scene.AddEntity(plow2);
+
             sphere = new Sphere(this, Content.Load<Model>("Models/Sphere/sphere_mapped"), effectastic);
             sphere.Position = new Vector3(8,4,3);
             sceneManager.Scene.AddEntity(sphere);
@@ -163,7 +167,8 @@ namespace XNAShadingEffects
 
             skybox.Draw(view, projection, camera.Position);
             //renderManager.Draw(sceneManager.Scene, world, view, projection, skyboxTexture, camera.Position);
-            renderManager.Draw(sceneManager.Scene, world, view, projection, sphereMap, camera.Position);
+            renderManager.Draw(sceneManager.Scene, world, view, projection, sphereMap, camera.Position, RenderPass.Opaque);
+            renderManager.Draw(sceneManager.Scene, world, view, projection, sphereMap, camera.Position, RenderPass.Translucent);
 
             base.Draw(gameTime);
         }
@@ -232,7 +237,7 @@ namespace XNAShadingEffects
                 GraphicsDevice.Clear(Color.CornflowerBlue);
 
                 skybox.Draw(viewMatrix, localProjection, localPos);
-                renderManager.Draw(sceneManager.Scene, world, viewMatrix, localProjection, skyboxTexture, localPos);
+                renderManager.Draw(sceneManager.Scene, world, viewMatrix, localProjection, skyboxTexture, localPos, RenderPass.Opaque);
             }
 
             this.GraphicsDevice.SetRenderTarget(null);

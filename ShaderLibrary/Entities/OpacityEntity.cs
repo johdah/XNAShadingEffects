@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ShaderLibrary.Effects;
+using ShaderLibrary.Managers;
 
 namespace ShaderLibrary.Entities
 {
@@ -65,20 +66,22 @@ namespace ShaderLibrary.Entities
             return result;
         }
 
-        public override void DrawModel(Matrix world, Matrix view, Matrix projection)
+        public override void DrawModel(Matrix world, Matrix view, Matrix projection, RenderPass pass)
         {
             if (_visible)
             {
-                //Draw all opaque
-                _device.BlendState = BlendState.Opaque;
-                _device.DepthStencilState = DepthStencilState.Default;
-                this.DrawMeshes(_opaqueMeshes, view, projection);
-
-                //Draw all translucent
-                _device.BlendState = BlendState.AlphaBlend;
-                _device.DepthStencilState = DepthStencilState.DepthRead;
-                this.DrawMeshes(_translucentMeshes, view, projection);
-
+                if(pass == RenderPass.Opaque) {
+                    //Draw all opaque
+                    _device.BlendState = BlendState.Opaque;
+                    _device.DepthStencilState = DepthStencilState.Default;
+                    this.DrawMeshes(_opaqueMeshes, view, projection);
+                }
+                else {
+                    //Draw all translucent
+                    _device.BlendState = BlendState.AlphaBlend;
+                    _device.DepthStencilState = DepthStencilState.DepthRead;
+                    this.DrawMeshes(_translucentMeshes, view, projection);
+                }
                 //For future object
                 _device.BlendState = BlendState.Opaque;
                 _device.DepthStencilState = DepthStencilState.Default;
@@ -151,11 +154,17 @@ namespace ShaderLibrary.Entities
         public void SetLighting(ConcreteEffect conceffect) {
             BasicEffect light = new BasicEffect(_device);
 
-            //light.FogEnabled = conceffect.FogEnabled;
-            //light.FogColor = conceffect.FogColor.ToVector3();
-            //light.FogStart = conceffect.FogStart;
-            //light.FogEnd = conceffect.FogEnd;
+            light.FogEnabled = conceffect.FogEnabled;
+            light.FogColor = conceffect.FogColor.ToVector3();
+            light.FogStart = conceffect.FogStart;
+            light.FogEnd = conceffect.FogEnd;
+                        
+            light.DirectionalLight0.Direction = conceffect.DirectionalLightDirection;
+            light.DirectionalLight0.DiffuseColor = conceffect.DirectionalLightDiffuseColor;
+            light.DirectionalLight0.SpecularColor = conceffect.DirectionalLightSpecularColor;
+            light.LightingEnabled = conceffect.LightningEnabled;
 
+            light.DirectionalLight0.Enabled = conceffect.DirectionalLightEnabled;
 
             foreach (ModelMesh modelMesh in _model.Meshes)
             {
@@ -171,14 +180,16 @@ namespace ShaderLibrary.Entities
                     }
                     if (effect is IEffectLights)
                     {
-                        IEffectLights lightEffect = (IEffectLights)effect;
-                        lightEffect.AmbientLightColor = light.AmbientLightColor;
-                        lightEffect.LightingEnabled = true;
-                        lightEffect.DirectionalLight0.Direction = light.DirectionalLight0.Direction;
-                        lightEffect.DirectionalLight0.DiffuseColor = light.DirectionalLight0.DiffuseColor;
-                        lightEffect.DirectionalLight0.Enabled = true;
-                        lightEffect.DirectionalLight0.SpecularColor = light.DirectionalLight0.SpecularColor;
-
+                        if (light.LightingEnabled)
+                        {
+                            IEffectLights lightEffect = (IEffectLights)effect;
+                            lightEffect.AmbientLightColor = light.AmbientLightColor;
+                            lightEffect.LightingEnabled = true;
+                            lightEffect.DirectionalLight0.Enabled = light.DirectionalLight0.Enabled;
+                            lightEffect.DirectionalLight0.Direction = light.DirectionalLight0.Direction;
+                            lightEffect.DirectionalLight0.DiffuseColor = light.DirectionalLight0.DiffuseColor;
+                            lightEffect.DirectionalLight0.SpecularColor = light.DirectionalLight0.SpecularColor;
+                        }
                     }
                 }
             }
