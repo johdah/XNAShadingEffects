@@ -96,19 +96,20 @@ namespace XNAShadingEffects
             skybox = new Skybox(skyboxTexture, Content);
 
             Snowplow plow = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
+            plow.Position += new Vector3(5,0,-2);
             sceneManager.Scene.AddEntity(plow);
 
             Snowplow plow2 = new Snowplow(Content.Load<Model>("Models/snowplow"), this, effectastic);
-            plow2.Position += new Vector3(0,0,5);
+            plow2.Position += new Vector3(5,0,2);
             sceneManager.Scene.AddEntity(plow2);
 
             sphere = new Sphere(this, Content.Load<Model>("Models/Sphere/sphere_mapped"), effectastic);
-            sphere.Position = new Vector3(8,4,3);
+            sphere.Position = new Vector3(0,0,0);
             sceneManager.Scene.AddEntity(sphere);
 
-            helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"), effectastic);
-            helicopta.Position = new Vector3(-4, 10, 0);
-            sceneManager.Scene.AddEntity(helicopta);
+            //helicopta = new Helicopter(this, Content.Load<Model>("Models/Helicopter/Helicopter"), effectastic);
+            //helicopta.Position = new Vector3(-4, 10, 0);
+            //sceneManager.Scene.AddEntity(helicopta);
 
             //Sets lightning for whole scene
             sceneManager.Scene.SetLightning(effectastic);
@@ -187,8 +188,8 @@ namespace XNAShadingEffects
             {
                 // render the scene to all cubemap faces
                 CubeMapFace cubeMapFace = (CubeMapFace)i;
-                Vector3 localPos = bounds.Center;
-                Vector3 localFacing = bounds.Center;
+                Vector3 localPos = Vector3.Zero;
+                Vector3 localFacing = Vector3.Zero;
 
                 switch (cubeMapFace)
                 {
