@@ -151,8 +151,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float4 specular = SpecularIntensity * SpecularColor * max(pow(dotProduct, Shininess), 0) * diffuseIntensity;
 
     // Calculate the texture color
-    //float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
-	float4 textureColor = tex2D(textureSampler, normalize(input.Reflection));
+    float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
+	//float4 textureColor = tex2D(textureSampler, normalize(input.Reflection));
     textureColor.a = 1;
 
 	float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
