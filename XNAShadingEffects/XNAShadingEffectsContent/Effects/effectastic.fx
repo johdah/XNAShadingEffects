@@ -33,7 +33,7 @@ sampler2D textureSampler = sampler_state {
 
 // Bump
 bool BumpEnabled = true;
-float BumpConstant = 1;
+float BumpConstant = 2.0;
 texture NormalMap;
 sampler2D bumpSampler = sampler_state {
     Texture = (NormalMap);
@@ -61,10 +61,10 @@ float3 DirectionalLightDirection = float3(0, -1, 0);
 float3 DirectionalLightDiffuseColor = float3(1, 1, 1);
 float3 DirectionalLightSpecularColor = float3(0, 0, 0);
  
-Texture SkyboxTexture; 
-samplerCUBE SkyboxSampler = sampler_state 
+Texture ReflectionTexture; 
+samplerCUBE ReflectionSampler = sampler_state 
 { 
-   texture = <SkyboxTexture>; 
+   texture = <ReflectionTexture>; 
    magfilter = LINEAR; 
    minfilter = LINEAR; 
    mipfilter = LINEAR; 
@@ -86,15 +86,16 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
 	float4 Position : POSITION0;
-	// Textured
-    float2 TextureCoordinate : TEXCOORD0;
+	// Reflection
+    float3 Reflection : TEXCOORD0;
 	// Diffuse
     float3 Normal : TEXCOORD1;
 	// Bump
     float3 Tangent : TEXCOORD2;
     float3 Binormal : TEXCOORD3;
+	// Textured
+    float2 TextureCoordinate : TEXCOORD4;
 	// Reflection
-    float3 Reflection : TEXCOORD4;
 	float  Interpolation : TEXCOORD5;
 };
 
@@ -130,46 +131,52 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
     // Calculate the normal, including the information in the bump map
-    float3 bump = BumpConstant * (tex2D(bumpSampler, input.TextureCoordinate) - (0.5, 0.5, 0.5));
-    float3 bumpNormal = input.Normal + (bump.x * input.Tangent + bump.y * input.Binormal);
-    bumpNormal = normalize(bumpNormal);
+    //float3 bump = BumpConstant * (tex2D(bumpSampler, input.TextureCoordinate) - (0.5, 0.5, 0.5));
+	float3 bump = BumpConstant * tex2D(bumpSampler, input.TextureCoordinate) - 1;
+    //float3 bumpNormal = input.Normal + (bump.x * input.Tangent + bump.y * input.Binormal);
+    //bumpNormal = normalize(bumpNormal);
+	float3 bumpNormal = normalize(bump.x*normalize(input.Tangent) + bump.y*normalize(input.Binormal) + bump.z*normalize(input.Normal));
 
-    // Calculate the diffuse light component with the bump map normal
-	float diffuseIntensity = normalize(DiffuseLightDirection);
-	if(BumpEnabled) {
-		diffuseIntensity = dot(normalize(DiffuseLightDirection), bumpNormal);
-	}
-    if(diffuseIntensity < 0)
-        diffuseIntensity = 0;
+    //// Calculate the diffuse light component with the bump map normal
+	//float diffuseIntensity = normalize(DiffuseLightDirection);
+	//if(BumpEnabled) {
+		//diffuseIntensity = dot(normalize(DiffuseLightDirection), bumpNormal);
+	//}
+    //if(diffuseIntensity < 0)
+        //diffuseIntensity = 0;
 
     // Calculate the specular light component with the bump map normal
-    float3 light = normalize(DiffuseLightDirection);
-    float3 r = normalize(2 * dot(light, bumpNormal) * bumpNormal - light);
-    float3 v = normalize(mul(normalize(ViewVector), World));
-    float dotProduct = dot(r, v);
+    //float3 light = normalize(DiffuseLightDirection);
+    //float3 r = normalize(2 * dot(light, bumpNormal) * bumpNormal - light);
+    //float3 v = normalize(mul(normalize(ViewVector), World));
+    //float dotProduct = dot(r, v);
 
-    float4 specular = SpecularIntensity * SpecularColor * max(pow(dotProduct, Shininess), 0) * diffuseIntensity;
+    //float4 specular = SpecularIntensity * SpecularColor * max(pow(dotProduct, Shininess), 0) * diffuseIntensity;
 
     // Calculate the texture color
-    float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
+    //float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
 	//float4 textureColor = tex2D(textureSampler, normalize(input.Reflection));
-    textureColor.a = 1;
+    //textureColor.a = 1;
 
-	float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
+	//float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
 
-	if(ReflectionEnabled) {
-		float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+	//if(ReflectionEnabled) {
+		float3 r = reflect(-normalize(input.Reflection), normalize(bumpNormal));
+
+		//float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
+		float4 reflectionColor = texCUBE(ReflectionSampler, r);
 		reflectionColor.a = 1;
 
-		tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
+		//tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular); // BUG??
-	}
+	//}
 
-	if(FogEnabled) {
-		return float4(lerp(tempColor,FogColor,input.Interpolation),1);
-	} else {
-		return float4(tempColor, 1);
-	}
+	//if(FogEnabled) {
+		//return float4(lerp(tempColor,FogColor,input.Interpolation),1);
+		return float4(lerp(reflectionColor,FogColor,input.Interpolation),1);
+	//} else {
+		//return float4(tempColor, 1);
+	//}
 }
 
 technique Effectastic

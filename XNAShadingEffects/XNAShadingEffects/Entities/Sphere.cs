@@ -59,7 +59,7 @@ namespace XNAShadingEffects.Entities
                     // Bump
                     _effect.Parameters["NormalMap"].SetValue(normalmap);
                     // Reflection
-                    _effect.Parameters["SkyboxTexture"].SetValue(reflectionTexture);
+                    _effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
                     _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
                     // Fog
                     _effect.Parameters["FogColor"].SetValue(Color.White.ToVector3());
