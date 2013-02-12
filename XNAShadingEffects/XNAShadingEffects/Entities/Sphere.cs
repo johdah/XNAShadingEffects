@@ -33,7 +33,8 @@ namespace XNAShadingEffects.Entities
             _isDoubleSided["Sphere"] = false;
 
             _texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
-            normalmap = game.Content.Load<Texture2D>("Models/Sphere/setts-normalmap");
+            normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");
+            //normalmap = game.Content.Load<Texture2D>("Models/Sphere/setts-normalmap");
         }
 
         public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
