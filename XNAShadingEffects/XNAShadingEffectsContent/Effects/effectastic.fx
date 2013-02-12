@@ -131,10 +131,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
     // Calculate the normal, including the information in the bump map
-    //float3 bump = BumpConstant * (tex2D(bumpSampler, input.TextureCoordinate) - (0.5, 0.5, 0.5));
 	float3 bump = BumpConstant * tex2D(bumpSampler, input.TextureCoordinate) - 1;
-    //float3 bumpNormal = input.Normal + (bump.x * input.Tangent + bump.y * input.Binormal);
-    //bumpNormal = normalize(bumpNormal);
 	float3 bumpNormal = normalize(bump.x*normalize(input.Tangent) + bump.y*normalize(input.Binormal) + bump.z*normalize(input.Normal));
 
     //// Calculate the diffuse light component with the bump map normal
@@ -171,11 +168,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular); // BUG??
 	//}
 
-	//if(FogEnabled) {
+	if(FogEnabled) {
 		return float4(lerp(reflectionColor,FogColor,input.Interpolation),1);
-	//} else {
+	} else {
 		//return float4(reflectionColor, 1);
-	//}
+		return reflectionColor;
+	}
 }
 
 technique Effectastic
