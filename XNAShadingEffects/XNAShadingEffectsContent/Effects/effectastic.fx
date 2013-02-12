@@ -22,6 +22,8 @@ float SpecularIntensity = 1;
 float3 ViewVector = float3(1, 0, 0);
 
 // Textured
+bool TextureEnabled = false;
+float4 TextureColorDefault = float4(1, 1, 1, 1);
 texture ModelTexture;
 sampler2D textureSampler = sampler_state {
     Texture = (ModelTexture);
@@ -172,6 +174,10 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	}else{
 		float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
 		textureColor.a=1;
+		if(!TextureEnabled) {
+			textureColor = TextureColorDefault;
+		}
+		
 		tempColor = saturate(textureColor*(diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 	}
 

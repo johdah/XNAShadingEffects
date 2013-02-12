@@ -28,14 +28,14 @@ namespace XNAShadingEffects.Entities
             _effect = new ConcreteEffect(effect);
             //this._effect.Parameters["AmbientIntensity"].SetValue(0);
             //this._effect.Parameters["DiffuseIntensity"].SetValue(0);
-            this._effect.Parameters["ReflectionEnabled"].SetValue(true);
-            this._effect.Parameters["BumpEnabled"].SetValue(false);
+            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
+            this._effect.Parameters["BumpEnabled"].SetValue(true);
             //this._effect.Parameters["SpecularIntensity"].SetValue(0);
             _isDoubleSided["Sphere"] = false;
 
             _texture = game.Content.Load<Texture2D>("Models/Sphere/texture");
-            normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");
-            //normalmap = game.Content.Load<Texture2D>("Models/Sphere/setts-normalmap");
+            //normalmap = game.Content.Load<Texture2D>("Models/Sphere/normalMap");
+            normalmap = game.Content.Load<Texture2D>("Models/Sphere/setts-normalmap");
         }
 
         public override void DrawModelWithEffect(Matrix world, Matrix view, Matrix projection, TextureCube reflectionTexture, Vector3 cameraPosition)
@@ -67,6 +67,8 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["FogColor"].SetValue(Color.White.ToVector3());
                     _effect.Parameters["FogEnd"].SetValue(20f);
                     _effect.Parameters["FogStart"].SetValue(10f);
+                    // Other
+                    _effect.Parameters["TextureColorDefault"].SetValue(Color.Gray.ToVector4());
                 }
                 mesh.Draw();
             }
