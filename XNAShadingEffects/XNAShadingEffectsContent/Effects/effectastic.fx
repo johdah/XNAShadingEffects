@@ -136,9 +136,13 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
     //// Calculate the diffuse light component with the bump map normal
 	//float diffuseIntensity = normalize(DiffuseLightDirection);
-	//if(BumpEnabled) {
+	float3 r;
+	if(BumpEnabled) {
 		//diffuseIntensity = dot(normalize(DiffuseLightDirection), bumpNormal);
-	//}
+		r = reflect(normalize(input.Reflection), normalize(bumpNormal));
+	}else{
+		r = reflect(normalize(input.Reflection), 0);
+	}
     //if(diffuseIntensity < 0)
         //diffuseIntensity = 0;
 
@@ -158,7 +162,6 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	//float3 tempColor = saturate(diffuseIntensity + AmbientColor * AmbientIntensity + specular);
 
 	//if(ReflectionEnabled) {
-		float3 r = reflect(-normalize(input.Reflection), normalize(bumpNormal));
 
 		//float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
 		float4 reflectionColor = texCUBE(ReflectionSampler, r);
