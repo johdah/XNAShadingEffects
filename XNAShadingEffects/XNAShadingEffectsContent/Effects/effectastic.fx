@@ -172,10 +172,9 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	//}
 
 	//if(FogEnabled) {
-		//return float4(lerp(tempColor,FogColor,input.Interpolation),1);
 		return float4(lerp(reflectionColor,FogColor,input.Interpolation),1);
 	//} else {
-		//return float4(tempColor, 1);
+		//return float4(reflectionColor, 1);
 	//}
 }
 

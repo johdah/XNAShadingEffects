@@ -202,7 +202,7 @@ namespace XNAShadingEffects
                         viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Backward, Vector3.Up);
                         break;
                     case CubeMapFace.PositiveX:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Right, Vector3.Up);
+                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Right, Vector3.Down);
                         break;
                     case CubeMapFace.PositiveY:
                         viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Up, Vector3.Backward);
