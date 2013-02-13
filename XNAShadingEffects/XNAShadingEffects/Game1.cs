@@ -185,7 +185,7 @@ namespace XNAShadingEffects
         private TextureCube GetReflectionCube(BoundingSphere bounds)
         {
             Matrix viewMatrix = Matrix.Identity;
-            Matrix localProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, GraphicsDevice.Viewport.AspectRatio, 0.01f, 1000f);
+            Matrix localProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 1f, 0.01f, 1000f);
 
             // Render our cube map, once for each cube face( 6 times ).
             for (int i = 0; i < 6; i++)
