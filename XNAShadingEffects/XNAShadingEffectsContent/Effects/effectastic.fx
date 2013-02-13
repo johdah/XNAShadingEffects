@@ -16,7 +16,7 @@ float DiffuseIntensity = 1.0;
 // Specular
 float Shininess = 200;
 float4 SpecularColor = float4(1, 1, 1, 1);    
-float SpecularIntensity = 1;
+float SpecularPower = 1;
 float3 ViewVector = float3(1, 0, 0);
 
 // Textured
@@ -161,7 +161,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	}
 
 	float dotProduct = dot(r2, v);
-    float4 specular = SpecularIntensity * SpecularColor * max(pow(dotProduct, Shininess), 0) * diffuseIntensity;
+    float4 specular = SpecularPower * SpecularColor * max(pow(dotProduct, Shininess), 0) * diffuseIntensity;
 	
     // Calculate the texture color
     float4 textureColor = TextureColorDefault;
