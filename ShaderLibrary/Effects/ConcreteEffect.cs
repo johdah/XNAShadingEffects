@@ -7,15 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace ShaderLibrary.Effects
 {
-    public class ConcreteEffect : Effect
+    public class ConcreteEffect : Effect, IEffectLights, IEffectFog
     {
         #region Fields
-
-        private List<BasicEffect> effects = new List<BasicEffect>();
-
         private EffectParameter alpha;
 
-        private EffectParameter ambientColor;
+        private EffectParameter ambientLightColor;
         private EffectParameter ambientIntensity;
 
         private EffectParameter bumpEnabled;
@@ -50,27 +47,16 @@ namespace ShaderLibrary.Effects
         #endregion
         #region Properties
 
-        public List<BasicEffect> Effects
-        {
-            get
-            {
-                return effects;
-            }
-            set
-            {
-                effects = value;
-            }
-        }
 
-        public Color AmbientColor
+        public Vector3 AmbientLightColor
         {
             get
             {
-                return new Color((Vector4)ambientColor.GetValueVector4());
+                return ambientLightColor.GetValueVector3();
             }
             set
             {
-                ambientColor.SetValue(((Color)value).ToVector4());
+                ambientLightColor.SetValue(value);
             }
         }
         public DirectionalLight DirectionalLight0
@@ -91,17 +77,17 @@ namespace ShaderLibrary.Effects
                 directionalLightSpecularColor.SetValue(value.SpecularColor);
             }
         }
-        public Boolean LightningEnabled
-        {
-            get
-            {
+
+
+        public bool LightingEnabled {
+            get {
                 return lightningEnabled.GetValueBoolean();
             }
-            set
-            {
+            set {
                 lightningEnabled.SetValue(value);
             }
         }
+
         public Boolean BumpEnabled
         {
             get
@@ -136,15 +122,16 @@ namespace ShaderLibrary.Effects
                 fogEnabled.SetValue(value);
             }
         }
-        public Color FogColor
+
+        public Vector3 FogColor
         {
             get
             {
-                return new Color((Vector3)fogColor.GetValueVector3());
+                return fogColor.GetValueVector3();
             }
             set
             {
-                fogColor.SetValue(((Color)value).ToVector3());
+                fogColor.SetValue(value);
             }
         }
         public float Alpha
@@ -322,7 +309,7 @@ namespace ShaderLibrary.Effects
             : base(source)
         {
             alpha = this.Parameters["Alpha"];
-            ambientColor = this.Parameters["AmbientColor"];
+            ambientLightColor = this.Parameters["AmbientLightColor"];
             ambientIntensity = this.Parameters["AmbientIntensity"];
 
             bumpEnabled = this.Parameters["BumpEnabled"];
@@ -355,5 +342,17 @@ namespace ShaderLibrary.Effects
             worldInverseTranspose = this.Parameters["WorldInverseTranspose"];
 
         }
+
+        public void EnableDefaultLighting() {
+            throw new NotImplementedException();
+        }
+        public DirectionalLight DirectionalLight1 {
+            get { throw new NotImplementedException(); }
+        }
+
+        public DirectionalLight DirectionalLight2 {
+            get { throw new NotImplementedException(); }
+        }
+
     }
 }
