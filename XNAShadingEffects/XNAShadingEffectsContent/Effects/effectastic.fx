@@ -5,7 +5,7 @@ float4x4 Projection;
 float Alpha = 1;
 
 // Ambient
-float4 AmbientColor = float4(1, 1, 1, 1);
+float3 AmbientLightColor = float3(1, 1, 1);
 float AmbientIntensity = 1;
 
 // Diffuse
@@ -189,7 +189,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		}
 	}
 
-	return saturate(textureColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
+	return saturate(textureColor * (diffuseIntensity + float4(AmbientLightColor.r,AmbientLightColor.g,AmbientLightColor.b,1) * AmbientIntensity + specular));
 }
 
 technique Effectastic

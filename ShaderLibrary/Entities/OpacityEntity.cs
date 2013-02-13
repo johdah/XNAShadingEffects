@@ -155,14 +155,14 @@ namespace ShaderLibrary.Entities
             BasicEffect light = new BasicEffect(_device);
 
             light.FogEnabled = conceffect.FogEnabled;
-            light.FogColor = conceffect.FogColor.ToVector3();
+            light.FogColor = conceffect.FogColor;
             light.FogStart = conceffect.FogStart;
             light.FogEnd = conceffect.FogEnd;
                         
             light.DirectionalLight0.Direction = conceffect.DirectionalLightDirection;
             light.DirectionalLight0.DiffuseColor = conceffect.DirectionalLightDiffuseColor;
             light.DirectionalLight0.SpecularColor = conceffect.DirectionalLightSpecularColor;
-            light.LightingEnabled = conceffect.LightningEnabled;
+            light.LightingEnabled = conceffect.LightingEnabled;
 
             light.DirectionalLight0.Enabled = conceffect.DirectionalLightEnabled;
 

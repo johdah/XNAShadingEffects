@@ -90,7 +90,7 @@ namespace XNAShadingEffects
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);             
             ConcreteEffect effectastic = new ConcreteEffect(Content.Load<Effect>("Effects/effectastic"));
-            effectastic.AmbientColor = Color.Violet;            
+            effectastic.AmbientLightColor = Color.Violet.ToVector3();            
 
             skyboxTexture = Content.Load<TextureCube>("Skyboxes/Sunset");
             skybox = new Skybox(skyboxTexture, Content);
