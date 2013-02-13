@@ -2,7 +2,6 @@ float4x4 World;
 float4x4 View;
 float4x4 Projection;
 
-
 float Alpha = 1;
 
 // Ambient
@@ -79,7 +78,6 @@ struct VertexShaderInput
     float4 Normal : NORMAL0; 
 	// Bump
     float3 Tangent : TANGENT0;
-    float3 Binormal : BINORMAL0; // Unnecessary
 	// Textured
     float2 TextureCoordinate : TEXCOORD0;  
 };
@@ -87,8 +85,6 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
 	float4 Position : POSITION0;
-	// Reflection
-    //float3 Reflection : TEXCOORD0;
 	// Diffuse
     float3 Normal : TEXCOORD0;
 	// Bump
@@ -96,9 +92,8 @@ struct VertexShaderOutput
 	// Textured
     float2 TextureCoordinate : TEXCOORD2;
 	// Reflection
-	float  Interpolation : TEXCOORD3;
-	float3 ViewDirection : TEXCOORD4;
-	float Depth : TEXCOORD5;
+	float3 ViewDirection : TEXCOORD3;
+	float Depth : TEXCOORD4;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -122,9 +117,6 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	// Textured
 	output.TextureCoordinate = input.TextureCoordinate;
 
-	// Fog
-	output.Interpolation  = saturate((output.Position.z-FogStart)/(FogEnd-FogStart));
-
 	output.Depth = output.Position.z;
 	output.ViewDirection = CameraPosition - worldPosition;
 
@@ -134,10 +126,12 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float3 GetBumpNormal(float2 TexCoord, float3 Normal, float3 Tangent) : COLOR0 {
 	// Get the tangent frame normal from the normal map.
 	float3 tN = 2.0 * tex2D(bumpSampler, TexCoord) - 1;
+
 	// Compute the unit vectors of the tangent frame in the world frame.
 	float3 wN = normalize(Normal);
 	float3 wT = normalize(Tangent);
 	float3 wB = cross(wN, wT);
+
 	// Transform the tangent frame normal to the world frame (Double check!)
 	return normalize(tN.x*wT + tN.y*wB + tN.z*wN);
 }
