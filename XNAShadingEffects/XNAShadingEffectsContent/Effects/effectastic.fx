@@ -10,8 +10,6 @@ float4 AmbientColor = float4(1, 1, 1, 1);
 float AmbientIntensity = 0.1;
 
 // Diffuse
-float4x4 WorldInverseTranspose;
-
 float3 DiffuseLightDirection = float3(1, 0, 0);
 float4 DiffuseColor = float4(1, 1, 1, 1);
 float DiffuseIntensity = 1.0;
@@ -95,13 +93,12 @@ struct VertexShaderOutput
     float3 Normal : TEXCOORD0;
 	// Bump
     float3 Tangent : TEXCOORD1;
-    float3 Binormal : TEXCOORD2;
 	// Textured
-    float2 TextureCoordinate : TEXCOORD3;
+    float2 TextureCoordinate : TEXCOORD2;
 	// Reflection
-	float  Interpolation : TEXCOORD4;
-	float3 ViewDirection : TEXCOORD5;
-	float Depth : TEXCOORD6;
+	float  Interpolation : TEXCOORD3;
+	float3 ViewDirection : TEXCOORD4;
+	float Depth : TEXCOORD5;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -121,7 +118,6 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	// Other
     output.Normal = normalize(mul(input.Normal, World));
     output.Tangent = normalize(mul(input.Tangent, World));
-    output.Binormal = normalize(mul(input.Binormal, WorldInverseTranspose));
 
 	// Textured
 	output.TextureCoordinate = input.TextureCoordinate;
@@ -149,8 +145,6 @@ float3 GetBumpNormal(float2 TexCoord, float3 Normal, float3 Tangent) : COLOR0 {
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
     // Calculate the normal, including the information in the bump map
-	//float3 bump = BumpConstant * tex2D(bumpSampler, input.TextureCoordinate) - 1;
-	//float3 bumpNormal = normalize(bump.x*normalize(input.Tangent) + bump.y*normalize(input.Binormal) + bump.z*normalize(input.Normal));
 	float3 bump = GetBumpNormal(input.TextureCoordinate, input.Normal, input.Tangent);
 
     //// Calculate the diffuse light component with the bump map normal
