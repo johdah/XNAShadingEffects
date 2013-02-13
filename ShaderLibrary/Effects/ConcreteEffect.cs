@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ShaderLibrary.Effects
 {
-    public class ConcreteEffect : Effect, IEffectLights, IEffectFog
+    public class ConcreteEffect : Effect, IEffectLights, IEffectFog, IEffectMatrices
     {
         #region Fields
         private EffectParameter alpha;
@@ -353,6 +353,5 @@ namespace ShaderLibrary.Effects
         public DirectionalLight DirectionalLight2 {
             get { throw new NotImplementedException(); }
         }
-
     }
 }
