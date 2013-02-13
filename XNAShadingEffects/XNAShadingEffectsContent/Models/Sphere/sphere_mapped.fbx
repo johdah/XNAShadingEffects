@@ -1813,7 +1813,7 @@ Objects:  {
 			Property: "LastFrame", "int", "",0
 			Property: "Width", "int", "",0
 			Property: "Height", "int", "",0
-			Property: "Path", "charptr", "", "sphere_mapped_texture.png"
+			Property: "Path", "charptr", "", "Untitled.png"
 			Property: "StartFrame", "int", "",0
 			Property: "StopFrame", "int", "",0
 			Property: "PlaySpeed", "double", "",1
@@ -1824,8 +1824,8 @@ Objects:  {
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0
-		Filename: "sphere_mapped_texture.png"
-		RelativeFilename: "sphere_mapped_texture.png"
+		Filename: "Untitled.png"
+		RelativeFilename: "Untitled.png"
 	}
 	Texture: "Texture::example-normal-map.jp", "TextureVideoClip" {
 		Type: "TextureVideoClip"
@@ -1849,8 +1849,8 @@ Objects:  {
 			Property: "VideoProperty", "object", ""
 		}
 		Media: "Video::example-normal-map.jp"
-		FileName: "sphere_mapped_texture.png"
-		RelativeFilename: "sphere_mapped_texture.png"
+		FileName: "Untitled.png"
+		RelativeFilename: "Untitled.png"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"

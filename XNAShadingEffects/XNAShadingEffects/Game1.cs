@@ -76,7 +76,7 @@ namespace XNAShadingEffects
 
             // Reflection
             //RefCubeMap = new RenderTargetCube(GraphicsDevice, 256, false, SurfaceFormat.Color, DepthFormat.Depth16, 1, RenderTargetUsage.PreserveContents);
-            RefCubeMap = new RenderTargetCube(this.GraphicsDevice, 512, false, SurfaceFormat.Color, DepthFormat.None);
+            RefCubeMap = new RenderTargetCube(this.GraphicsDevice, 256, false, SurfaceFormat.Color, DepthFormat.None);
 
             base.Initialize();
         }
