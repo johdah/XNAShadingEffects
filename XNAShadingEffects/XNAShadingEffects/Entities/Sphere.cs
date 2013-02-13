@@ -26,7 +26,7 @@ namespace XNAShadingEffects.Entities
             : base(model, game)
         {
             _effect = new ConcreteEffect(effect);
-            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
+            this._effect.Parameters["ReflectionEnabled"].SetValue(true);
             this._effect.Parameters["BumpEnabled"].SetValue(true);
             _isDoubleSided["Sphere"] = false;
 
@@ -58,9 +58,9 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["ReflectionTexture"].SetValue(reflectionTexture);
                     _effect.Parameters["CameraPosition"].SetValue(cameraPosition);
                     // Fog
-                    _effect.Parameters["FogColor"].SetValue(Color.White.ToVector3());
-                    _effect.Parameters["FogEnd"].SetValue(20f);
-                    _effect.Parameters["FogStart"].SetValue(10f);
+                    _effect.Parameters["FogColor"].SetValue(Color.Gray.ToVector3());
+                    _effect.Parameters["FogEnd"].SetValue(30f);
+                    _effect.Parameters["FogStart"].SetValue(20f);
                     // Other
                     _effect.Parameters["TextureColorDefault"].SetValue(Color.Gray.ToVector4());
                     _effect.Parameters["AmbientLightColor"].SetValue(Color.Gold.ToVector3());
