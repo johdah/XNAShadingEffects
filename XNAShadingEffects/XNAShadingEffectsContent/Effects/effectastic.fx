@@ -181,7 +181,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	//float4 tempColor;
 	//float4 reflectionColor = TintColor * texCUBE(ReflectionSampler, normalize(input.Reflection));
 	//if(ReflectionEnabled) {
-		float3 reflection = reflect(-normalize(input.ViewDirection), input.Normal);
+		float3 reflection = reflect(-normalize(input.ViewDirection), normalize(input.Normal));
 		if(BumpEnabled) {
 			reflection = reflect(-normalize(input.ViewDirection), bump);
 		}
