@@ -45,9 +45,9 @@ sampler2D bumpSampler = sampler_state {
 
 // Fog
 bool FogEnabled = true;
-float3 FogColor = float3(1, 1, 1);
-float FogEnd = 20;
-float FogStart = 10;
+float3 FogColor = float3(0.5, 0.5, 0.5);
+float FogEnd = 30;
+float FogStart = 20;
 
 // Reflection
 bool ReflectionEnabled = true;
