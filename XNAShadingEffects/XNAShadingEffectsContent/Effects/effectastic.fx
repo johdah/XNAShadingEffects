@@ -101,6 +101,7 @@ struct VertexShaderOutput
 	// Reflection
 	float  Interpolation : TEXCOORD4;
 	float3 ViewDirection : TEXCOORD5;
+	float Depth : TEXCOORD6;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -128,6 +129,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	// Fog
 	output.Interpolation  = saturate((output.Position.z-FogStart)/(FogEnd-FogStart));
 
+	output.Depth = output.Position.z;
 	output.ViewDirection = CameraPosition - worldPosition;
 
     return output;
@@ -185,7 +187,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		}
 
 		float4 reflectionColor = float4(texCUBE(ReflectionSampler, normalize(reflection)).xyz, 0);
-		return TintColor * reflectionColor;
+		float4 reflectionColor2 = TintColor * reflectionColor;
 
 		//tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular); // BUG??
@@ -199,12 +201,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		//tempColor = saturate(textureColor*(diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 	//}
 
-	//if(FogEnabled) {
-		//return float4(lerp(tempColor,FogColor,input.Interpolation),1);
-	//} else {
-		//return float4(reflectionColor, 1);
-		//return tempColor;
-	//}
+	if(FogEnabled) {
+		float l = saturate((input.Depth - FogStart) / (FogEnd - FogStart));
+		return float4(lerp(reflectionColor2,FogColor,l),1);
+	} else {
+		return reflectionColor2;
+	}
 }
 
 technique Effectastic

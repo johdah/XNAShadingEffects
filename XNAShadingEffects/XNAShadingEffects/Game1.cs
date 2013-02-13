@@ -197,22 +197,22 @@ namespace XNAShadingEffects
                 switch (cubeMapFace)
                 {
                     case CubeMapFace.NegativeX:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Left, Vector3.Up);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Left, Vector3.Up);
                         break;
                     case CubeMapFace.NegativeY:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Down, Vector3.Forward);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Down, Vector3.Forward);
                         break;
                     case CubeMapFace.NegativeZ:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Backward, Vector3.Up);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Backward, Vector3.Up);
                         break;
                     case CubeMapFace.PositiveX:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Right, Vector3.Up);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Right, Vector3.Up);
                         break;
                     case CubeMapFace.PositiveY:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Up, Vector3.Backward);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Up, Vector3.Backward);
                         break;
                     case CubeMapFace.PositiveZ:
-                        viewMatrix = Matrix.CreateLookAt(localPos, Vector3.Forward, Vector3.Up);
+                        viewMatrix = Matrix.CreateLookAt(localPos, localPos + Vector3.Forward, Vector3.Up);
                         break;
                 }
 
