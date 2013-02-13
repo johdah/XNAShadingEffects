@@ -6,7 +6,7 @@ float Alpha = 1;
 
 // Ambient
 float4 AmbientColor = float4(1, 1, 1, 1);
-float AmbientIntensity = 0.1;
+float AmbientIntensity = 1;
 
 // Diffuse
 float3 DiffuseLightDirection = float3(1, 0, 0);

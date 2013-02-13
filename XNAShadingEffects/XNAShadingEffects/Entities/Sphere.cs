@@ -66,6 +66,7 @@ namespace XNAShadingEffects.Entities
                     _effect.Parameters["FogStart"].SetValue(10f);
                     // Other
                     _effect.Parameters["TextureColorDefault"].SetValue(Color.Gray.ToVector4());
+                    _effect.Parameters["AmbientColor"].SetValue(Color.Gold.ToVector4());
                 }
                 mesh.Draw();
             }
