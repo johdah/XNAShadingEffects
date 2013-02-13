@@ -28,8 +28,8 @@ namespace XNAShadingEffects.Entities
             _effect = new ConcreteEffect(effect);
             //this._effect.Parameters["AmbientIntensity"].SetValue(0);
             //this._effect.Parameters["DiffuseIntensity"].SetValue(0);
-            this._effect.Parameters["ReflectionEnabled"].SetValue(true);
-            this._effect.Parameters["BumpEnabled"].SetValue(false);
+            this._effect.Parameters["ReflectionEnabled"].SetValue(false);
+            this._effect.Parameters["BumpEnabled"].SetValue(true);
             //this._effect.Parameters["SpecularIntensity"].SetValue(0);
             _isDoubleSided["Sphere"] = false;
 
