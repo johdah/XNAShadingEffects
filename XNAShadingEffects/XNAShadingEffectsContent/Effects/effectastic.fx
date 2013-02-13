@@ -179,16 +179,14 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	//float4 tempColor;
 	//float4 reflectionColor = TintColor * texCUBE(ReflectionSampler, normalize(input.Reflection));
 	//if(ReflectionEnabled) {
-		float3 reflection = reflect(-normalize(input.ViewDirection), bump);
-		//float3 reflection = reflect(-normalize(input.ViewDirection), input.Normal);
+		float3 reflection = reflect(-normalize(input.ViewDirection), input.Normal);
+		if(BumpEnabled) {
+			reflection = reflect(-normalize(input.ViewDirection), bump);
+		}
+
 		float4 reflectionColor = float4(texCUBE(ReflectionSampler, normalize(reflection)).xyz, 0);
 		return TintColor * reflectionColor;
 
-
-		//float4 reflectionColor = TintColor * texCUBE(SkyboxSampler, normalize(input.Reflection));
-		//tempColor = texCUBE(ReflectionSampler, r);
-		//tempColor.a = 1;
-				
 		//tempColor = saturate(reflectionColor * (diffuseIntensity + AmbientColor * AmbientIntensity + specular));
 		//tempColor = saturate(reflectionColor * (diffuseIntensity) + AmbientColor * AmbientIntensity + specular); // BUG??
 	//}else{
